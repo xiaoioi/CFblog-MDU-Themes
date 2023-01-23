@@ -1,0 +1,187 @@
+<!doctype html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <link rel="stylesheet" type="text/css" href="theme.css">
+    <title>{{ &articleSingle.title }}</title>
+{{ &OPT.codeBeforBody }}
+</head>
+
+<body>
+    <div class="mdui-toolbar mdui-color-indigo mdui-appbar-scroll-toolbar-hide mdui-shadow-3">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
+        </a>
+        <span class="mdui-typo-title"></span>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#exampleDialog'}">
+            <i class="mdui-icon material-icons">search</i>
+        </a>
+    </div>
+
+    <body class="mdui-drawer-body-right">
+        <div class="mdui-drawer" id="left-drawer">
+            <ul class="mdui-list" mdui-collapse="{accordion: true}">
+                <li class="mdui-list-item mdui-ripple">
+                    <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
+                    <a href="/" class="mdui-list-item-content">主页</a>
+                </li>
+                <li class="mdui-list-item mdui-ripple" id="switch-theme">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
+                    <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
+                </li>
+                <li class="mdui-collapse-item mdui-collapse-item">
+                    <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
+                        <div class="mdui-list-item-content">友情链接</div>
+                        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                        {{ #widgetLinkList }}
+                        <a href="{{ &url }}">
+                            <li class="mdui-list-item mdui-ripple">{{ &title }}</li>
+                        </a>
+                        {{ /widgetLinkList }}
+                    </ul>
+                </li>
+                <li class="mdui-divider"></li>
+                {{ #widgetMenuList }}
+                <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i>
+                    <div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
+                </a>
+                {{ /widgetMenuList }}
+                </li>
+            </ul>
+        </div>
+        <div class="mdui-col-md-10 mdui-col-offset-md-1">
+            <div class="mdui-card mdui-m-y-3">
+                <div class="mdui-card-media">
+                    <img src="{{ &articleSingle.img }}" />
+                    <div class="mdui-card-media-covered">
+                        <div class="mdui-card-primary">
+                            <div class="mdui-card-primary-title">{{ &articleSingle.title }}</div>
+                            <div class="mdui-card-primary-subtitle">{{ &articleSingle.createDate10 }} 当前页阅读量为:<span class="waline-pageview-count" /></div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                <div class="mdui-container">
+                    <div class="mdui-typo">
+                        {{ &articleSingle.contentHtml }}
+                    </div>
+                    <p>
+                    <div class="mdui-chip mdui-typo">
+                        <span class="mdui-chip-icon mdui-color-blue">
+                            <i class="mdui-icon material-icons">label_outline</i>
+                        </span>
+                        <span class="mdui-chip-title">{{ #articleSingle.tags }}<a href="/tags/{{&.}}">{{&.}}</a> {{ /articleSingle.tags }}</span>
+                    </div>
+                </div>
+                <div class="mdui-typo">
+                    <hr />
+                </div>
+                <div class="mdui-container">
+                    <h3>评论</h3>
+                    <div id="waline"></div>
+                    {{ &OPT.commentCode }}
+                </div>
+            </div>
+            <p>
+            <p></p>
+            </p>
+        </div>
+        <!-- 搜索 --!>
+<div class="mdui-dialog" id="exampleDialog">
+<div class="mdui-textfield">
+ <i class="mdui-icon material-icons">search</i>
+ <input type="text" maxlength="20" class="mdui-textfield-input" id="myInput" onkeyup="myFunction()" placeholder="搜索..">
+</div>
+
+    <table id="myTable">
+        <tbody>
+           {{ #articleList }}
+            <tr>
+                <td>
+<p>
+<div class="mdui-col-md-10 mdui-col-offset-md-1">
+<a href="{{ &url }}">
+<div class="mdui-card">
+  <div class="mdui-card-media">
+    <img src="{{ &img }}"/>
+    <div class="mdui-card-media-covered">
+      <div class="mdui-card-primary">
+        <div class="mdui-card-primary-title">{{ &title }}</div>
+        <div class="mdui-card-primary-subtitle">{{ &createDate10 }}</div>
+      </div>
+    </div>
+  </div></a>
+  <div class="mdui-card-actions">
+  
+  <p>
+<div class="mdui-chip">
+  <span class="mdui-chip-icon mdui-color-blue">
+    <i class="mdui-icon material-icons">remove_red_eye</i>
+  </span>
+  <span class="mdui-chip-title"><span class="waline-pageview-count" data-path="/{{ &url }}" /></span>
+</div>
+</div>
+</div>
+</div>
+<p>
+<p><p>
+</td>
+            </tr>
+{{ /articleList }}
+        </tbody>
+    </table>
+  </div>
+</div>
+<!-- 搜索 --!>
+<span style="background-color: #C0C0C0;" class="mdui-typo mdui-center mdui-text-center">{{ &OPT.copyRight }}</span>
+</body>
+    <script>
+        function myFunction() {
+          // 声明变量
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("myTable");
+          tr = table.getElementsByTagName("tr");
+         
+          // 循环遍历所有列表项，并隐藏那些与搜索查询不匹配的项
+          for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }
+          }
+        }
+    </script>
+<script>
+    //在所有希望保留深色主题的页面里保留
+    if(localStorage.darkTheme)
+        document.body.classList.add("mdui-theme-layout-dark");
+
+    //在有切换按钮的页面保留
+    document.getElementById("switch-theme").addEventListener(
+        "click",
+        () => document.body.classList.toggle("mdui-theme-layout-dark") ?
+            (localStorage.darkTheme = true) :
+            (delete localStorage.darkTheme)
+    );
+</script>l
+        <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    </body>
+</html>
