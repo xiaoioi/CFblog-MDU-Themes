@@ -6,15 +6,16 @@
     <meta name="renderer" content="webkit" />
     <meta name="force-rendering" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
-    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <link rel="stylesheet" href="//unpkg.com/@waline/client@v2/dist/waline.css" />
+    <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
     <link rel="stylesheet" type="text/css" href="{{ &OPT.theme_github_path }}theme.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <title>{{ &articleSingle.title }}</title>
     {{ &OPT.codeBeforBody }}
 </head>
 
-<body>
+<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto">
     <div class="mdui-toolbar mdui-color-indigo mdui-appbar-scroll-toolbar-hide mdui-shadow-3">
         <a href="javascript:;" class="mdui-btn mdui-btn-icon">
             <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
@@ -68,12 +69,24 @@
                     <div class="mdui-card-media-covered">
                         <div class="mdui-card-primary">
                             <div class="mdui-card-primary-title">{{ &articleSingle.title }}</div>
-                            <div class="mdui-card-primary-subtitle">{{ &articleSingle.createDate10 }} 当前页阅读量为:<span class="waline-pageview-count" /></div>
                         </div>
                     </div>
                 </div>
-                <p>
                 <div class="mdui-container">
+                    <div class="mdui-chip">
+                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
+                        <span class="mdui-chip-title">{{ &articleSingle.createDate10 }}</span>
+                    </div>
+                    <div class="mdui-chip" mdui-menu="{target:'#posttag1046',position:'top'}">
+                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe54e;</i></span>
+                        <span class="mdui-chip-title">标签</span>
+                    </div>
+                    <ul class="mdui-menu" id="posttag1046">
+                        {{ #articleSingle.tags }}
+                        <li class="mdui-menu-item mdui-ripple">
+                            <a href="/tags/{{&.}}">{{&.}}</a>
+                        </li>{{ /articleSingle.tags }}
+                    </ul>
                     <div class="mdui-typo">
                         {{ &articleSingle.contentHtml }}
                     </div>
@@ -82,7 +95,7 @@
                         <span class="mdui-chip-icon mdui-color-blue">
                             <i class="mdui-icon material-icons">label_outline</i>
                         </span>
-                        <span class="mdui-chip-title">{{ #articleSingle.tags }}<a href="/tags/{{&.}}">{{&.}}</a> {{ /articleSingle.tags }}</span>
+                        <span class="mdui-chip-title"></span>
                     </div>
                 </div>
                 <div class="mdui-typo">
@@ -98,21 +111,83 @@
             <p></p>
             </p>
         </div>
-<span style="background-color: #C0C0C0;" class="mdui-typo mdui-center mdui-text-center">{{ &OPT.copyRight }}</span>
-</body>
-<script>
-    //在所有希望保留深色主题的页面里保留
-    if(localStorage.darkTheme)
-        document.body.classList.add("mdui-theme-layout-dark");
+            <div class="mdui-row">
+                {{ #articleNewer }}
+                <a href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 footer-nav-left mdui-text-color-black">
+                    <div class="footer-nav-text">
+                        <i class="mdui-icon material-icons">arrow_back</i>
+                        <span class="footer-nav-direction mdui-hidden-xs-down">上一篇</span>
+                        <div class="footer-nav-chapter mdui-hidden-xs-down">{{ &title }}</div>
+                    </div>
+                </a>
+                {{ /articleNewer }}
+                {{ #articleOlder }}
+                <a href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 footer-nav-right mdui-text-color-black">
+                    <div class="footer-nav-text">
+                        <i class="mdui-icon material-icons">arrow_forward</i>
+                        <span class="footer-nav-direction">下一篇</span>
+                        <div class="footer-nav-chapter">{{ &title }}</div>
+                    </div>
+                </a>
+                {{ /articleOlder }}
+            </div>
+        <span style="background-color: #C0C0C0;" class="mdui-typo mdui-center mdui-text-center">{{ &OPT.copyRight }}</span>
+    </body>
+    <script>
+        //在所有希望保留深色主题的页面里保留
+        if (localStorage.darkTheme)
+            document.body.classList.add("mdui-theme-layout-dark");
 
-    //在有切换按钮的页面保留
-    document.getElementById("switch-theme").addEventListener(
-        "click",
-        () => document.body.classList.toggle("mdui-theme-layout-dark") ?
+        //在有切换按钮的页面保留
+        document.getElementById("switch-theme").addEventListener(
+            "click",
+            () => document.body.classList.toggle("mdui-theme-layout-dark") ?
             (localStorage.darkTheme = true) :
             (delete localStorage.darkTheme)
-    );
-</script>
-        <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-    </body>
+        );
+    </script>
+    <script src="//unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+    <style>
+        pre {
+            position: relative;
+            margin-bottom: 24px;
+            border-radius: 3px;
+            border: 1px solid #C3CCD0;
+            background: #FFF;
+            overflow: hidden;
+        }
+
+        code {
+            display: block;
+            padding: 12px 24px;
+            overflow-y: auto;
+            font-weight: 300;
+            font-family: Menlo, monospace;
+            font-size: 0.8em;
+        }
+
+        code.has-numbering {
+            margin-left: 21px;
+        }
+
+        .pre-numbering {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 20px;
+            padding: 12px 2px 12px 0;
+            border-right: 1px solid #C3CCD0;
+            border-radius: 3px 0 0 3px;
+            background-color: #EEE;
+            text-align: right;
+            font-family: Menlo, monospace;
+            font-size: 0.8em;
+            color: #AAA;
+        }
+    </style>
+</body>
+
 </html>
