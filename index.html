@@ -15,7 +15,7 @@
     {{ &OPT.codeBeforHead }}
 </head>
 
-<body class="mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto">
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto">
     <div class="mdui-toolbar mdui-color-indigo mdui-appbar-scroll-toolbar-hide mdui-shadow-3">
         <a href="javascript:;" class="mdui-btn mdui-btn-icon">
             <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
@@ -29,7 +29,7 @@
         </a>
     </div>
 
-    <body class="mdui-drawer-body-right">
+    <body class="mdui-drawer-body-left mdui-appbar-with-toolbar">
         <div class="mdui-drawer" id="left-drawer">
             <ul class="mdui-list" mdui-collapse="{accordion: true}">
                 <li class="mdui-list-item mdui-ripple">
@@ -76,18 +76,17 @@
                                 <div class="mdui-card-media-covered">
                                     <div class="mdui-card-primary">
                                         <div class="mdui-card-primary-title">{{ &title }}</div>
-                                        <div class="mdui-card-primary-subtitle">{{ &createDate10 }}</div>
                                     </div>
                                 </div>
                             </div>
                     </a>
                 <div class="mdui-card-actions">
-
-                    <p>
-
+                    <div class="mdui-text-truncate">
+                        <p>{{ &contentText }} ...</p>
+                    </div>
                     <div class="mdui-chip">
                         <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
-                        <span class="mdui-chip-title">{{ &articleSingle.createDate10 }}</span>
+                        <span class="mdui-chip-title">{{ &createDate10 }}</span>
                     </div>
                 </div>
             </div>
