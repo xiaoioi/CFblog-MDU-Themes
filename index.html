@@ -1,227 +1,115 @@
 <!doctype html>
 <html lang="zh-cmn-Hans">
-  <head>
+
+<head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no"/>
-    <meta name="renderer" content="webkit"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
+    <meta name="renderer" content="webkit" />
     <meta name="author" content="" />
     <meta name='description' content=''>
-    <meta name="force-rendering" content="webkit"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <!-- 脚本文件 --><script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script><!-- 样式文件 --><link  rel="stylesheet"  href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
-    <!--  -->
-    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-    <link  rel="stylesheet"  href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
-    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css"/>
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <link rel="stylesheet" href="{{ &OPT.theme_github_path }}theme.css" />
     <title>{{ &OPT.siteName }}</title>
-      <style type="text/css">
-   body{
-    width:auto;
-    height:auto;
-    margin: 0px;    
-   }
-   .toubu{
-    position:relative;
-    background:rgb(0, 174, 255);
-    width:auto;
-    height:105px;
-    bottom:30px;
-   }
-   .chtb{
-    width:auto;
-    height:130px;
-   }
-   .zj{
-    position:relative;
-    background:#fff;
-    width:auto;
-    height:auto;   
-   }
-   .anbj
-    {
-    position:relative;
-    background:#fff;
-    width:310px;
-    height:150px;
-    top:100px; 
-    left:7%;
-   }  
-   .anbjx
-    {
-    position:relative;
-    background:#fff;
-    width:250px;
-    height:100px;
-    top: 1000px; 
-    left:33%;
-   }  
-   .zhezhao{
-    position: fixed;
-    left: 0px;
-    top: 15px;
-    background:#fff;
-    width:1100px;
-    height: 125px;
-    opacity:1;
-   }
-   .tankuang{
-   position: relative; 
-    background: #fff;
-    width:auto;
-    height: auto;
-    border-radius: 5px;
-    margin: 5%;
-   }
-   #header{
-    height: 50px;
-   }
-   #header-right{
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    border-radius: 15px;
-    background: red;
-    color: #fff;
-    right: 50px;
-    top: 0px;
-    text-align: center;
-   }
-  </style>
-  {{ &OPT.codeBeforHead }}
-  </head>
+    {{ &OPT.codeBeforHead }}
+</head>
 
-
- <script>
-    //从属性里复制
-    var btn = document.getElementById('btn');
-    var clipboard = new Clipboard(btn);//实例化
-    clipboard.on('success', function(e) {//复制成功执行的回调，可选
-        console.log(e);
-    });
-    clipboard.on('error', function(e) {//复制失败执行的回调，可选
-        console.log(e);
-    });
-    //从另外一个元素复制内容
-    var btn2 = document.getElementById('btn2');
-    var clipboard2 = new Clipboard(btn2);//实例化
-    clipboard2.on('success', function(e) {//复制成功执行的回调，可选
-        console.log(e);
-    });
-    clipboard2.on('error', function(e) {//复制失败执行的回调，可选
-        console.log(e);
-    });
-    //JS里指定复制的内容
-
-    var btn3 = document.getElementById('btn3');
-
-    var clipboard3 = new Clipboard(btn3, {
-
-        text: function() {
-
-            return '333-JS里指定复制的内容';
-        }
-    });
-    clipboard3.on('success', function(e) {//复制成功执行的回调，可选
-        console.log(e);
-    });
-    clipboard3.on('error', function(e) {//复制失败执行的回调，可选
-        console.log(e);
-    });
-</script>
-  <body>
-<div class="mdui-toolbar mdui-color-indigo mdui-appbar-scroll-toolbar-hide mdui-shadow-3">
-  <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-    <i class="mdui-icon material-icons"  mdui-drawer="{target: '#left-drawer'}">menu</i>
-  </a>
-  <div class="logo">
-  <span class="mdui-typo-title">{{ &OPT.siteName }}</span>
-  </div>
-  <div class="mdui-toolbar-spacer"></div>
-  <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#exampleDialog'}">
-    <i class="mdui-icon material-icons">search</i>
-  </a>
-  <a href=" " class="mdui-btn mdui-btn-icon">
-    <i class="mdui-icon material-icons">refresh</i>
-  </a>
-<button href="javascript:;" class="mdui-btn mdui-ripple mdui-btn-icon" mdui-menu="{target: '#example-attr'}"><i class="mdui-icon material-icons">more_vert</i></button>
-</div>
-<body class="mdui-drawer-body-right">
-  <div class="mdui-drawer" id="left-drawer">
-<ul class="mdui-list" mdui-collapse="{accordion: true}">
-  <li class="mdui-list-item mdui-ripple">
-    <a href="/"<i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
-    <a href="/" class="mdui-list-item-content">主页</a>
-  </li>
-  <li class="mdui-list-item mdui-ripple" id="switch-theme">
-    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
-    <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
-  </li>
-            <li class="mdui-collapse-item mdui-collapse-item">
-              <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>                                        
-              <div class="mdui-list-item-content">友情链接</div>  
-              <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>            
-              </div>
-              <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-              {{ #widgetLinkList }}
-              <a href="{{ &url }}"><li class="mdui-list-item mdui-ripple">{{ &title }}</li></a>  
-              {{ /widgetLinkList }}
-              </ul>
-              </li>
-  <li class="mdui-divider"></li>
-  {{ #widgetMenuList }}
-  <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
-    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i><div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
-  </a>
-  {{ /widgetMenuList }}
-</li>
-</ul>
-  </div>
-  <div class="mdui-progress mdui-color-theme-400" style="position: fixed;z-index:8000 !important;" id="preload">
-<div class="mdui-progress-indeterminate"></div>
-
-</div>
-<div class="mdui-container">
-<div class="mdui-col-md-10 mdui-col-offset-md-1">
-{{ #articleList }}
-<p>
-<a href="{{ &url }}">
-<div class="mdui-card">
-  <div class="mdui-card-media">
-    <img src="{{ &img }}"/>
-    <div class="mdui-card-media-covered">
-      <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title">{{ &title }}</div>
-        <div class="mdui-card-primary-subtitle">{{ &createDate10 }}</div>
-      </div>
+<body>
+    <div class="mdui-toolbar mdui-color-indigo mdui-appbar-scroll-toolbar-hide mdui-shadow-3">
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
+        </a>
+        <div class="logo">
+            <span class="mdui-typo-title">{{ &OPT.siteName }}</span>
+        </div>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#exampleDialog'}">
+            <i class="mdui-icon material-icons">search</i>
+        </a>
     </div>
-  </div></a>
-  <div class="mdui-card-actions">
-  
-  <p>
-<div class="mdui-chip">
-  <span class="mdui-chip-icon mdui-color-blue">
-    <i class="mdui-icon material-icons">remove_red_eye</i>
-  </span>
-  <span class="mdui-chip-title"><span class="waline-pageview-count" data-path="/{{ &url }}" /></span>
-</div>
-</div>
-</div>
-{{ /articleList }}
-<p>
-<p><p>
-{{ #pageNewer }}
-    <div>
-        <a class="mdui-btn mdui-btn-raised mdui-float-left" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_left</i>{{ &title }}</a>
-    </div>
-{{ /pageNewer }}
-{{ #pageNewer }}
-    <div>
-        <a class="mdui-btn mdui-btn-raised mdui-float-right" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_right</i>{{ &title }}</a>
-    </div>
-{{ /pageNewer }}
-<p></div></div>
-<!-- 搜索 --!>
+
+    <body class="mdui-drawer-body-right">
+        <div class="mdui-drawer" id="left-drawer">
+            <ul class="mdui-list" mdui-collapse="{accordion: true}">
+                <li class="mdui-list-item mdui-ripple">
+                    <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
+                    <a href="/" class="mdui-list-item-content">主页</a>
+                </li>
+                <li class="mdui-list-item mdui-ripple" id="switch-theme">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
+                    <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
+                </li>
+                <li class="mdui-collapse-item mdui-collapse-item">
+                    <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+                        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
+                        <div class="mdui-list-item-content">友情链接</div>
+                        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                    </div>
+                    <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
+                        {{ #widgetLinkList }}
+                        <a href="{{ &url }}">
+                            <li class="mdui-list-item mdui-ripple">{{ &title }}</li>
+                        </a>
+                        {{ /widgetLinkList }}
+                    </ul>
+                </li>
+                <li class="mdui-divider"></li>
+                {{ #widgetMenuList }}
+                <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i>
+                    <div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
+                </a>
+                {{ /widgetMenuList }}
+                </li>
+            </ul>
+        </div>
+        </div>
+        <div class="mdui-container">
+            <div class="mdui-col-md-10 mdui-col-offset-md-1">
+                {{ #articleList }}
+                <p>
+                    <a href="{{ &url }}">
+                        <div class="mdui-card">
+                            <div class="mdui-card-media">
+                                <img src="{{ &img }}" />
+                                <div class="mdui-card-media-covered">
+                                    <div class="mdui-card-primary">
+                                        <div class="mdui-card-primary-title">{{ &title }}</div>
+                                        <div class="mdui-card-primary-subtitle">{{ &createDate10 }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                    </a>
+                <div class="mdui-card-actions">
+
+                    <p>
+                    <div class="mdui-chip">
+                        <span class="mdui-chip-icon mdui-color-blue">
+                            <i class="mdui-icon material-icons">remove_red_eye</i>
+                        </span>
+                        <span class="mdui-chip-title"><span class="waline-pageview-count" data-path="/{{ &url }}" /></span>
+                    </div>
+                </div>
+            </div>
+            {{ /articleList }}
+            <p>
+            <p>
+            <p>
+                {{ #pageNewer }}
+            <div>
+                <a class="mdui-btn mdui-btn-raised mdui-float-left" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_left</i>{{ &title }}</a>
+            </div>
+            {{ /pageNewer }}
+            {{ #pageNewer }}
+            <div>
+                <a class="mdui-btn mdui-btn-raised mdui-float-right" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_right</i>{{ &title }}</a>
+            </div>
+            {{ /pageNewer }}
+            <p>
+        </div>
+        </div>
+        <!-- 搜索 --!>
 <div class="mdui-dialog" id="exampleDialog">
 <div class="mdui-textfield">
  <i class="mdui-icon material-icons">search</i>
@@ -309,8 +197,8 @@
             (delete localStorage.darkTheme)
     );
 </script>
-    <!-- MDUI JavaScript -->
-    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-  {{ &OPT.codeBeforBody }}
-  </body>
+        <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+        {{ &OPT.codeBeforBody }}
+    </body>
+
 </html>

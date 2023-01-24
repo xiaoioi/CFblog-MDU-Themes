@@ -1,4 +1,5 @@
 <!doctype html>
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
@@ -8,9 +9,9 @@
     <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
     <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
-    <link rel="stylesheet" type="text/css" href="theme.css">
+    <link rel="stylesheet" type="text/css" href="{{ &OPT.theme_github_path }}theme.css">
     <title>{{ &articleSingle.title }}</title>
-{{ &OPT.codeBeforBody }}
+    {{ &OPT.codeBeforBody }}
 </head>
 
 <body>
@@ -97,78 +98,8 @@
             <p></p>
             </p>
         </div>
-        <!-- 搜索 --!>
-<div class="mdui-dialog" id="exampleDialog">
-<div class="mdui-textfield">
- <i class="mdui-icon material-icons">search</i>
- <input type="text" maxlength="20" class="mdui-textfield-input" id="myInput" onkeyup="myFunction()" placeholder="搜索..">
-</div>
-
-    <table id="myTable">
-        <tbody>
-           {{ #articleList }}
-            <tr>
-                <td>
-<p>
-<div class="mdui-col-md-10 mdui-col-offset-md-1">
-<a href="{{ &url }}">
-<div class="mdui-card">
-  <div class="mdui-card-media">
-    <img src="{{ &img }}"/>
-    <div class="mdui-card-media-covered">
-      <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title">{{ &title }}</div>
-        <div class="mdui-card-primary-subtitle">{{ &createDate10 }}</div>
-      </div>
-    </div>
-  </div></a>
-  <div class="mdui-card-actions">
-  
-  <p>
-<div class="mdui-chip">
-  <span class="mdui-chip-icon mdui-color-blue">
-    <i class="mdui-icon material-icons">remove_red_eye</i>
-  </span>
-  <span class="mdui-chip-title"><span class="waline-pageview-count" data-path="/{{ &url }}" /></span>
-</div>
-</div>
-</div>
-</div>
-<p>
-<p><p>
-</td>
-            </tr>
-{{ /articleList }}
-        </tbody>
-    </table>
-  </div>
-</div>
-<!-- 搜索 --!>
 <span style="background-color: #C0C0C0;" class="mdui-typo mdui-center mdui-text-center">{{ &OPT.copyRight }}</span>
 </body>
-    <script>
-        function myFunction() {
-          // 声明变量
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-         
-          // 循环遍历所有列表项，并隐藏那些与搜索查询不匹配的项
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
-            }
-          }
-        }
-    </script>
 <script>
     //在所有希望保留深色主题的页面里保留
     if(localStorage.darkTheme)
@@ -181,7 +112,7 @@
             (localStorage.darkTheme = true) :
             (delete localStorage.darkTheme)
     );
-</script>l
+</script>
         <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
     </body>
 </html>
