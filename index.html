@@ -9,7 +9,7 @@
     <meta name="force-rendering" content="webkit" />
     <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
     <link rel="stylesheet" href="//linguang.top/theme.css" />
-    <title>{{ &articleSingle.title }}</title>
+    <title>{{ &OPT.siteName }}</title>
 </head>
 
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
@@ -34,19 +34,9 @@
                     <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
                     <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
                 </li>
-                <li class="mdui-collapse-item mdui-collapse-item">
-                    <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
-                        <div class="mdui-list-item-content">友情链接</div>
-                        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                    </div>
-                    <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-                        {{ #widgetLinkList }}
-                        <a href="{{ &url }}">
-                            <li class="mdui-list-item mdui-ripple">{{ &title }}</li>
-                        </a>
-                        {{ /widgetLinkList }}
-                    </ul>
+                <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#link'}">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
+                    <div class="mdui-list-item-content">友情链接</div>
                 </li>
                 <li class="mdui-divider"></li>
                 {{ #widgetMenuList }}
@@ -107,29 +97,6 @@
     <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
     <script src="https://unpkg.com/@waline/client/dist/pageview.js"></script>
     <script>
-        function myFunction() {
-            // 声明变量
-            var input, filter, table, tr, td, i, txtValue;
-            input = document.getElementById("myInput");
-            filter = input.value.toUpperCase();
-            table = document.getElementById("myTable");
-            tr = table.getElementsByTagName("tr");
-
-            // 循环遍历所有列表项，并隐藏那些与搜索查询不匹配的项
-            for (i = 0; i < tr.length; i++) {
-                td = tr[i].getElementsByTagName("td")[0];
-                if (td) {
-                    txtValue = td.textContent || td.innerText;
-                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                        tr[i].style.display = "";
-                    } else {
-                        tr[i].style.display = "none";
-                    }
-                }
-            }
-        }
-    </script>
-    <script>
         //在所有希望保留深色主题的页面里保留
         if (localStorage.darkTheme)
             document.body.classList.add("mdui-theme-layout-dark");
@@ -143,6 +110,27 @@
         );
     </script>
     <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-    {{ &OPT.codeBeforBody }}
+    <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
+        <div class="mdui-container">
+            <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
+                <div class="mdui-col">
+                    {{ #widgetLinkList }}
+                    <div class="mdui-card mdui-m-y-1 mdui-hoverable">
+                        <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
+                                <div class="mdui-card-header-title">{{ &title }}</div>
+                            </div>
+                        </a>
+                    </div>
+                    {{ /widgetLinkList }}
+                </div>
+            </div>
+        </div>
+        <div class="mdui-dialog-actions">
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
+        </div>
+    </div>
 </body>
+    {{ &OPT.codeBeforBody }}
 </html>

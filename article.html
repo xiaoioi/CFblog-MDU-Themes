@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="//linguang.top/theme.css" />
     <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css">
     <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
-    <title>{{ &articleSingle.title }}</title>
+    <title>{{ &OPT.siteName }}</title>
 </head>
 
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
@@ -38,19 +38,9 @@
                     <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
                     <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
                 </li>
-                <li class="mdui-collapse-item mdui-collapse-item">
-                    <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-                        <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
-                        <div class="mdui-list-item-content">友情链接</div>
-                        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-                    </div>
-                    <ul class="mdui-collapse-item-body mdui-list mdui-list-dense">
-                        {{ #widgetLinkList }}
-                        <a href="{{ &url }}">
-                            <li class="mdui-list-item mdui-ripple">{{ &title }}</li>
-                        </a>
-                        {{ /widgetLinkList }}
-                    </ul>
+                <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#link'}">
+                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
+                    <div class="mdui-list-item-content">友情链接</div>
                 </li>
                 <li class="mdui-divider"></li>
                 {{ #widgetMenuList }}
@@ -158,6 +148,27 @@
     <script>
         hljs.highlightAll();
     </script>
+    <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
+        <div class="mdui-container">
+            <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
+                <div class="mdui-col">
+                    {{ #widgetLinkList }}
+                    <div class="mdui-card mdui-m-y-1 mdui-hoverable">
+                        <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
+                            <div class="mdui-card-header">
+                                <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
+                                <div class="mdui-card-header-title">{{ &title }}</div>
+                            </div>
+                        </a>
+                    </div>
+                    {{ /widgetLinkList }}
+                </div>
+            </div>
+        </div>
+        <div class="mdui-dialog-actions">
+            <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
+        </div>
+    </div>
 </body>
 
 </html>
