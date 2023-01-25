@@ -22,7 +22,7 @@ const OPT = { //网站配置
   "logo":"",//logo
 
   "theme_github_path":"https://raw.fastgit.org/xiaoioi/CFblog-MDU-Themes@ain/",//主题路径,必须以 "/"" 结尾,否则影响运行
-  "themeURL" : "https://raw.fastgit.org/xiaoioi/CFblog-MDU-Themes/main/MDU/", // 模板地址,必须以 "/"" 结尾,否则影响运行
+  "themeURL" : "https://raw.fastgit.org/xiaoioi/CFblog-MDU-Themes/main/", // 模板地址,必须以 "/"" 结尾,否则影响运行
   "pageSize" : 5,//每页文章数
   "recentlySize" : 6,//最近文章数
   "recentlyType" : 1,//最近文章类型：1-按创建时间倒序（按id倒序），2-按修改时间排序
@@ -31,7 +31,7 @@ const OPT = { //网站配置
   "html404" : `<!DOCTYPE html><head><meta http-equiv="Content-Type"content="text/html; charset=UTF-8"><meta name="viewport"content="width=device-width, initial-scale=1, maximum-scale=5"><meta http-equiv="X-UA-Compatible"content="IE=edge"><meta name="theme-color"content="#3f51b5"><meta name="mdui-main-color"content="#3f51b5"><Title>页面走丢啦</Title><style>.mdui-background-404{position:absolute;top:0;left:0;z-index:1;width:100%;height:61.8%;text-align:center;border-radius:0px 0px 10px 10px}.mdui-background-404{background-color:#212121!important}.mdui-background-404 span{position:relative;display:inline-block;width:100%;letter-spacing:0!important}.mdui-background-404 span span{display:inline-block;margin:-10px 0 0!important;opacity:.54}.mdui-main-404{position:absolute;bottom:0;left:0;border-radius:25px 25px 0px 0px;width:100%;height:38.2%}.mdui-main-404 a{margin:10px 20px;padding:0 22px;height:55px;font-size:20px;line-height:55px}.mdui-main-404 div{width:100%;text-align:center}.mdui-btn{border-radius:25px;margin-right:8px;margin-top:8px}</style></head><body class="mdui-theme-primary-indigo mdui-theme-accent-pink"><div class="mdui-color-theme mdui-typo-display-4 mdui-valign mdui-background-404"><span>404<span class="mdui-typo-headline">这个页面走丢了哦！</span></span></div><div class="mdui-valign mdui-main-404"><div><a href="javascript:history.go(-1);"class="mdui-btn mdui-color-theme-accent mdui-ripple"style="border-radius: 25px;">返回上一页</a><div></div></div></div></body><link rel="stylesheet"href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css"/><script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script></html>`,//404页面代码
   "codeBeforHead":``,//其他代码,显示在</head>前
   "codeBeforBody":``,//其他代码,显示在</body>前
-  "commentCode":`<script>import{init}from'https://unpkg.com/@waline/client@v2/dist/waline.mjs';init({el:'#waline',serverURL:'你的Waline'网址,emoji:['//unpkg.com/@waline/emojis@1.1.0/weibo','//unpkg.com/@waline/emojis@1.1.0/bilibili',],});</script>`,//评论区代码()
+  "commentCode":`<script type="module">import{init}from'https://unpkg.com/@waline/client@v2/dist/waline.mjs';init({el:'#waline',serverURL:'你的Waline网址',emoji:['//unpkg.com/@waline/emojis@1.1.0/tw-emoji','//unpkg.com/@waline/emojis@1.1.0/alus','//unpkg.com/@waline/emojis@1.1.0/qq','//unpkg.com/@waline/emojis@1.1.0/bmoji','//unpkg.com/@waline/emojis@1.1.0/bilibili','//unpkg.com/@waline/emojis@1.1.0/tieba',],});</script>`,//评论区代码()
   "widgetOther":``,//20201224新增参数,用于右侧 小部件扩展
   "copyRight" :`Powered by <a href="https://github.com/xiaoioi/CFblog-MDU-Themes/">MDU</a> & <a href="https://blog.youchen.cf">CFblog-pro</a> & <a href="https://blog.arrontg.cf">CFBlog-Plus</a> & <a href="https://blog.gezhong.vip">CF-Blog </a>`,//自定义版权信息,建议保留大公无私的 Coudflare 和 作者 的链接
   "robots":`User-agent: *

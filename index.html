@@ -1,35 +1,31 @@
 <!doctype html>
-<html lang="zh-cmn-Hans">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
     <meta name="renderer" content="webkit" />
-    <meta name="author" content="" />
-    <meta name='description' content=''>
     <meta name="force-rendering" content="webkit" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <link rel="stylesheet" href="https://unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
-    <link rel="stylesheet" href="{{ &OPT.theme_github_path }}theme.css" />
-    <title>{{ &OPT.siteName }}</title>
-    {{ &OPT.codeBeforHead }}
+    <link rel="stylesheet" href="//unpkg.com/@waline/client@v2/dist/waline.css" />
+    <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
+    <link rel="stylesheet" href="//linguang.top/theme.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
+    <title>{{ &articleSingle.title }}</title>
 </head>
 
-<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto">
-    <div class="mdui-toolbar mdui-color-indigo mdui-appbar-scroll-toolbar-hide mdui-shadow-3">
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-            <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
-        </a>
-        <div class="logo">
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
+    <div class="mdui-appbar mdui-appbar-fixed">
+        <div class="mdui-toolbar mdui-color-indigo mdui-shadow-3">
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+                <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
+            </a>
             <span class="mdui-typo-title">{{ &OPT.siteName }}</span>
+            <div class="mdui-toolbar-spacer"></div>
         </div>
-        <div class="mdui-toolbar-spacer"></div>
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon" mdui-dialog="{target: '#exampleDialog'}">
-            <i class="mdui-icon material-icons">search</i>
-        </a>
     </div>
 
-    <body class="mdui-drawer-body-left mdui-appbar-with-toolbar">
+    <body class="mdui-drawer-body-right mdui-drawer-full-height">
         <div class="mdui-drawer" id="left-drawer">
             <ul class="mdui-list" mdui-collapse="{accordion: true}">
                 <li class="mdui-list-item mdui-ripple">
@@ -63,7 +59,8 @@
                 {{ /widgetMenuList }}
                 </li>
             </ul>
-        </div>
+
+            <span style="position:fixed;bottom:0;" class="mdui-typo mdui-center mdui-typo-body-2-opacity">{{ &OPT.copyRight }}</span>
         </div>
         <div class="mdui-container">
             <div class="mdui-col-md-10 mdui-col-offset-md-1">
@@ -101,102 +98,53 @@
             {{ /pageNewer }}
             {{ #pageNewer }}
             <div>
-                <a class="mdui-btn mdui-btn-raised mdui-float-right" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_right</i>{{ &title }}</a>
+                <a class="mdui-btn mdui-btn-raised mdui-float-right" href="{{ &url }}">{{ &title }}<i class="mdui-icon material-icons">chevron_right</i></a>
             </div>
             {{ /pageNewer }}
             <p>
         </div>
         </div>
-        <!-- 搜索 --!>
-<div class="mdui-dialog" id="exampleDialog">
-<div class="mdui-textfield">
- <i class="mdui-icon material-icons">search</i>
- <input type="text" maxlength="20" class="mdui-textfield-input" id="myInput" onkeyup="myFunction()" placeholder="搜索..">
-</div>
-
-    <table id="myTable">
-        <tbody>
-           {{ #articleList }}
-            <tr>
-                <td>
-<p>
-<div class="mdui-col-md-10 mdui-col-offset-md-1">
-<a href="{{ &url }}">
-<div class="mdui-card">
-  <div class="mdui-card-media">
-    <img src="{{ &img }}"/>
-    <div class="mdui-card-media-covered">
-      <div class="mdui-card-primary">
-        <div class="mdui-card-primary-title">{{ &title }}</div>
-        <div class="mdui-card-primary-subtitle">{{ &createDate10 }}</div>
-      </div>
-    </div>
-  </div></a>
-  <div class="mdui-card-actions">
-  
-  <p>
-<div class="mdui-chip">
-  <span class="mdui-chip-icon mdui-color-blue">
-    <i class="mdui-icon material-icons">remove_red_eye</i>
-  </span>
-  <span class="mdui-chip-title"><span class="waline-pageview-count" data-path="/{{ &url }}" /></span>
-</div>
-</div>
-</div>
-</div>
-<p>
-<p><p>
-</td>
-            </tr>
-{{ /articleList }}
-        </tbody>
-    </table>
-  </div>
-</div>
-<!-- 搜索 --!>
-<span style="background-color: #C0C0C0;" class="mdui-center mdui-typo mdui-text-center mdui-container-fluid">{{ &OPT.copyRight }}</span>
-</body>
-<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-<link  rel="stylesheet"  href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
-<script src="https://unpkg.com/@waline/client/dist/pageview.js"></script>
-     <script>
+    </body>
+    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+    <script src="https://unpkg.com/@waline/client/dist/pageview.js"></script>
+    <script>
         function myFunction() {
-          // 声明变量
-          var input, filter, table, tr, td, i, txtValue;
-          input = document.getElementById("myInput");
-          filter = input.value.toUpperCase();
-          table = document.getElementById("myTable");
-          tr = table.getElementsByTagName("tr");
-         
-          // 循环遍历所有列表项，并隐藏那些与搜索查询不匹配的项
-          for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[0];
-            if (td) {
-              txtValue = td.textContent || td.innerText;
-              if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-              } else {
-                tr[i].style.display = "none";
-              }
+            // 声明变量
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+
+            // 循环遍历所有列表项，并隐藏那些与搜索查询不匹配的项
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
             }
-          }
         }
     </script>
-<script>
-    //在所有希望保留深色主题的页面里保留
-    if(localStorage.darkTheme)
-        document.body.classList.add("mdui-theme-layout-dark");
+    <script>
+        //在所有希望保留深色主题的页面里保留
+        if (localStorage.darkTheme)
+            document.body.classList.add("mdui-theme-layout-dark");
 
-    //在有切换按钮的页面保留
-    document.getElementById("switch-theme").addEventListener(
-        "click",
-        () => document.body.classList.toggle("mdui-theme-layout-dark") ?
+        //在有切换按钮的页面保留
+        document.getElementById("switch-theme").addEventListener(
+            "click",
+            () => document.body.classList.toggle("mdui-theme-layout-dark") ?
             (localStorage.darkTheme = true) :
             (delete localStorage.darkTheme)
-    );
-</script>
-        <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-        {{ &OPT.codeBeforBody }}
-    </body>
-
+        );
+    </script>
+    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+    {{ &OPT.codeBeforBody }}
+</body>
 </html>
