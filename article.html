@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css">
     <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
     <title>{{ &articleSingle.title }}</title>
-    {{ &OPT.codeBeforBody }}
 </head>
 
 <body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
@@ -81,15 +80,25 @@
                         <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
                         <span class="mdui-chip-title">{{ &articleSingle.createDate10 }}</span>
                     </div>
-                    <div class="mdui-chip" mdui-menu="{target:'#posttag1046',position:'top'}">
+                    <div class="mdui-chip" mdui-menu="{target:'#posttag',position:'top'}">
                         <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe54e;</i></span>
                         <span class="mdui-chip-title">标签</span>
                     </div>
-                    <ul class="mdui-menu" id="posttag1046">
+                    <div class="mdui-chip" mdui-menu="{target:'#postcategory',position:'top'}">
+                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe5c3;</i></span>
+                        <span class="mdui-chip-title">分类</span>
+                    </div>
+                    <ul class="mdui-menu" id="posttag">
                         {{ #articleSingle.tags }}
                         <li class="mdui-menu-item mdui-ripple">
                             <a href="/tags/{{&.}}">{{&.}}</a>
                         </li>{{ /articleSingle.tags }}
+                    </ul>
+                    <ul class="mdui-menu" id="postcategory">
+                        {{ #articleSingle.category }}
+                        <li class="mdui-menu-item mdui-ripple">
+                            <a href="/category/{{&.}}">{{&.}}</a>
+                        </li>{{ /articleSingle.category }}
                     </ul>
                     </p>
                 </div>
@@ -111,7 +120,7 @@
             <p></p>
             </p>
         </div>
-        <div class="mdui-color-theme mdui-row footer-nav" style="width:102%;height: 100px;">
+        <div class="mdui-color-theme mdui-row footer-nav" style="width:102%;">
             {{ #articleNewer }}
             <a style="text-decoration: none;" href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 mdui-float-left mdui-text-color-black">
                 <div class="footer-nav-text">
