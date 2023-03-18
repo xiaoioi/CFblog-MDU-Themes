@@ -13,9 +13,9 @@
     <title>{{ &OPT.siteName }}</title>
 </head>
 
-<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
+<body class="mdui-theme-primary-indigo mdui-drawer-body-left mdui-drawer-full-height mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
     <div class="mdui-appbar mdui-appbar-fixed">
-        <div class="mdui-toolbar mdui-color-indigo mdui-shadow-3">
+        <div class="mdui-toolbar mdui-color-indigo mdui-drawer-full-height mdui-shadow-3">
             <a href="javascript:;" class="mdui-btn mdui-btn-icon">
                 <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
             </a>
@@ -23,115 +23,114 @@
             <div class="mdui-toolbar-spacer"></div>
         </div>
     </div>
+    <div class="mdui-drawer mdui-shadow-0" id="left-drawer">
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-list-item mdui-ripple">
+                <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
+                <a href="/" class="mdui-list-item-content">主页</a>
+            </li>
+            <li class="mdui-list-item mdui-ripple" id="switch-theme">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
+                <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#link'}">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </li>
+            <li class="mdui-divider"></li>
+            {{ #widgetMenuList }}
+            <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i>
+                <div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
+            </a>
+            {{ /widgetMenuList }}
+            </li>
+        </ul>
 
-    <body class="mdui-drawer-body-right mdui-drawer-full-height">
-        <div class="mdui-drawer" id="left-drawer">
-            <ul class="mdui-list" mdui-collapse="{accordion: true}">
-                <li class="mdui-list-item mdui-ripple">
-                    <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
-                    <a href="/" class="mdui-list-item-content">主页</a>
-                </li>
-                <li class="mdui-list-item mdui-ripple" id="switch-theme">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
-                    <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
-                </li>
-                <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#link'}">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
-                    <div class="mdui-list-item-content">友情链接</div>
-                </li>
-                <li class="mdui-divider"></li>
-                {{ #widgetMenuList }}
-                <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i>
-                    <div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
-                </a>
-                {{ /widgetMenuList }}
-                </li>
-            </ul>
-
-            <span style="position:fixed;bottom:0;" class="mdui-typo mdui-center mdui-typo-body-2-opacity">{{ &OPT.copyRight }}</span>
-        </div>
-        <div class="mdui-container">
-            <div class="mdui-col-md-10 mdui-col-offset-md-1">
-                {{ #articleList }}
-                <p>
-                    <a href="{{ &url }}">
-                        <div class="mdui-card">
-                            <div class="mdui-card-media">
-                                <img src="{{ &img }}" />
-                                <div class="mdui-card-media-covered">
-                                    <div class="mdui-card-primary">
-                                        <div class="mdui-card-primary-title">{{ &title }}</div>
-                                    </div>
+        <span style="position:fixed;bottom:0;" class="mdui-typo mdui-center mdui-typo-body-2-opacity">{{ &OPT.copyRight }}</span>
+    </div>
+    <div class="mdui-container">
+        <div class="mdui-col-md-10 mdui-col-offset-md-1">
+            {{ #articleList }}
+            <p>
+                <a href="{{ &url }}">
+                    <div class="mdui-card">
+                        <div class="mdui-card-media">
+                            <img src="{{ &img }}" />
+                            <div class="mdui-card-media-covered">
+                                <div class="mdui-card-primary">
+                                    <div class="mdui-card-primary-title">{{ &title }}</div>
                                 </div>
                             </div>
-                    </a>
-                <div class="mdui-card-actions">
-                    <div class="mdui-text-truncate">
-                        <p>{{ &contentText }} ...</p>
-                    </div>
-                    <div class="mdui-chip">
-                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
-                        <span class="mdui-chip-title">{{ &createDate10 }}</span>
-                    </div>
+                        </div>
+                </a>
+            <div class="mdui-card-actions">
+                <div class="mdui-text-truncate">
+                    <p>{{ &contentText }} ...</p>
+                </div>
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
+                    <span class="mdui-chip-title">{{ &createDate10 }}</span>
                 </div>
             </div>
-            {{ /articleList }}
-            <p>
-            <p>
-            <p>
-                {{ #pageNewer }}
-            <div>
-                <a class="mdui-btn mdui-btn-raised mdui-float-left" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_left</i>{{ &title }}</a>
-            </div>
-            {{ /pageNewer }}
+        </div>
+        {{ /articleList }}
+        <p>
+        <p>
+        <p>
             {{ #pageNewer }}
-            <div>
-                <a class="mdui-btn mdui-btn-raised mdui-float-right" href="{{ &url }}">{{ &title }}<i class="mdui-icon material-icons">chevron_right</i></a>
-            </div>
-            {{ /pageNewer }}
-            <p>
+        <div>
+            <a class="mdui-btn mdui-btn-raised mdui-float-left" href="{{ &url }}"><i class="mdui-icon material-icons">chevron_left</i>{{ &title }}</a>
         </div>
+        {{ /pageNewer }}
+        {{ #pageNewer }}
+        <div>
+            <a class="mdui-btn mdui-btn-raised mdui-float-right" href="{{ &url }}">{{ &title }}<i class="mdui-icon material-icons">chevron_right</i></a>
         </div>
-    </body>
-    <script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
-    <script src="https://unpkg.com/@waline/client/dist/pageview.js"></script>
-    <script>
-        //在所有希望保留深色主题的页面里保留
-        if (localStorage.darkTheme)
-            document.body.classList.add("mdui-theme-layout-dark");
-
-        //在有切换按钮的页面保留
-        document.getElementById("switch-theme").addEventListener(
-            "click",
-            () => document.body.classList.toggle("mdui-theme-layout-dark") ?
-            (localStorage.darkTheme = true) :
-            (delete localStorage.darkTheme)
-        );
-    </script>
-    <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-    <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
-        <div class="mdui-container">
-            <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
-                <div class="mdui-col">
-                    {{ #widgetLinkList }}
-                    <div class="mdui-card mdui-m-y-1 mdui-hoverable">
-                        <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
-                            <div class="mdui-card-header">
-                                <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
-                                <div class="mdui-card-header-title">{{ &title }}</div>
-                            </div>
-                        </a>
-                    </div>
-                    {{ /widgetLinkList }}
-                </div>
-            </div>
-        </div>
-        <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
-        </div>
+        {{ /pageNewer }}
+        <p>
+    </div>
     </div>
 </body>
-    {{ &OPT.codeBeforBody }}
+<script src="https://unpkg.com/@waline/client@v2/dist/waline.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
+<script src="https://unpkg.com/@waline/client/dist/pageview.js"></script>
+<script>
+    //在所有希望保留深色主题的页面里保留
+    if (localStorage.darkTheme)
+        document.body.classList.add("mdui-theme-layout-dark");
+
+    //在有切换按钮的页面保留
+    document.getElementById("switch-theme").addEventListener(
+        "click",
+        () => document.body.classList.toggle("mdui-theme-layout-dark") ?
+        (localStorage.darkTheme = true) :
+        (delete localStorage.darkTheme)
+    );
+</script>
+<script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+<div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
+    <div class="mdui-container">
+        <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
+            <div class="mdui-col">
+                {{ #widgetLinkList }}
+                <div class="mdui-card mdui-m-y-1 mdui-hoverable">
+                    <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
+                        <div class="mdui-card-header">
+                            <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
+                            <div class="mdui-card-header-title">{{ &title }}</div>
+                        </div>
+                    </a>
+                </div>
+                {{ /widgetLinkList }}
+            </div>
+        </div>
+    </div>
+    <div class="mdui-dialog-actions">
+        <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
+    </div>
+</div>
+</body>
+{{ &OPT.codeBeforBody }}
+
 </html>

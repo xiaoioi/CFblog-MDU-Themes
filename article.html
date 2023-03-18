@@ -17,101 +17,102 @@
     <title>{{ &OPT.siteName }}</title>
 </head>
 
-<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
-<div class="mdui-appbar mdui-appbar-fixed">
-    <div class="mdui-toolbar mdui-color-indigo mdui-shadow-3">
-        <a href="javascript:;" class="mdui-btn mdui-btn-icon">
-            <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
-        </a>
-        <span class="mdui-typo-headline">{{ &OPT.siteName }}</span>
-        <a href="javascript:;" class="mdui-typo-title">{{ &articleSingle.title }}</a>
-        <div class="mdui-toolbar-spacer"></div>
-    </div>
-</div>
-    <body class="mdui-drawer-body-right mdui-drawer-full-height">
-        <div class="mdui-drawer" id="left-drawer">
-            <ul class="mdui-list" mdui-collapse="{accordion: true}">
-                <li class="mdui-list-item mdui-ripple">
-                    <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
-                    <a href="/" class="mdui-list-item-content">主页</a>
-                </li>
-                <li class="mdui-list-item mdui-ripple" id="switch-theme">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
-                    <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
-                </li>
-                <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#link'}">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
-                    <div class="mdui-list-item-content">友情链接</div>
-                </li>
-                <li class="mdui-divider"></li>
-                {{ #widgetMenuList }}
-                <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
-                    <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i>
-                    <div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
-                </a>
-                {{ /widgetMenuList }}
-                </li>
-            </ul>
-            
-        <span style="position:fixed;bottom:0;" class="mdui-typo mdui-center mdui-typo-body-2-opacity">{{ &OPT.copyRight }}</span>
+<body class="mdui-theme-primary-indigo mdui-theme-accent-pink mdui-drawer-body-left mdui-theme-layout-auto mdui-appbar-with-toolbar">
+    <div class="mdui-appbar mdui-appbar-fixed">
+        <div class="mdui-toolbar mdui-color-indigo mdui-shadow-3">
+            <a href="javascript:;" class="mdui-btn mdui-btn-icon">
+                <i class="mdui-icon material-icons" mdui-drawer="{target: '#left-drawer'}">menu</i>
+            </a>
+            <span class="mdui-typo-headline">{{ &OPT.siteName }}</span>
+            <a href="javascript:;" class="mdui-typo-title">{{ &articleSingle.title }}</a>
+            <div class="mdui-toolbar-spacer"></div>
         </div>
-        <div class="mdui-col-md-10 mdui-col-offset-md-1">
-            <div class="mdui-card mdui-m-y-5">
-                <div class="mdui-card-media">
-                    <img src="{{ &articleSingle.img }}" />
-                    <div class="mdui-card-media-covered">
-                        <div class="mdui-card-primary">
-                            <div class="mdui-card-primary-title">{{ &articleSingle.title }}</div>
-                        </div>
+    </div>
+    <div class="mdui-drawer mdui-shadow-0" id="left-drawer">
+        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+            <li class="mdui-list-item mdui-ripple">
+                <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
+                <a href="/" class="mdui-list-item-content">主页</a>
+            </li>
+            <li class="mdui-list-item mdui-ripple" id="switch-theme">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-deep-orange" id="switch-theme">brightness_6</i>
+                <div class="mdui-list-item-content" id="switch-theme">切换主题</div>
+            </li>
+            <li class="mdui-list-item mdui-ripple" mdui-dialog="{target: '#link'}">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-green">link</i>
+                <div class="mdui-list-item-content">友情链接</div>
+            </li>
+            <li class="mdui-divider"></li>
+            {{ #widgetMenuList }}
+            <a href="{{ &url }}" class="mdui-list-item mdui-ripple">
+                <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-orange-200" id="switch-theme">link</i>
+                <div class="mdui-list-item-content" id="switch-theme">{{ &title }}</div>
+            </a>
+            {{ /widgetMenuList }}
+            </li>
+        </ul>
+
+        <span style="position:fixed;bottom:0;" class="mdui-typo mdui-center mdui-typo-body-2-opacity">{{ &OPT.copyRight }}</span>
+    </div>
+    <div class="mdui-col-md-10 mdui-col-offset-md-1">
+        <div class="mdui-card mdui-m-y-5">
+            <div class="mdui-card-media">
+                <img src="{{ &articleSingle.img }}" />
+                <div class="mdui-card-media-covered">
+                    <div class="mdui-card-primary">
+                        <div class="mdui-card-primary-title">{{ &articleSingle.title }}</div>
                     </div>
-                </div>
-                <div class="mdui-container">
-                    </p>
-                    <div class="mdui-chip">
-                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
-                        <span class="mdui-chip-title">{{ &articleSingle.createDate10 }}</span>
-                    </div>
-                    <div class="mdui-chip" mdui-menu="{target:'#posttag',position:'top'}">
-                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe54e;</i></span>
-                        <span class="mdui-chip-title">标签</span>
-                    </div>
-                    <div class="mdui-chip" mdui-menu="{target:'#postcategory',position:'top'}">
-                        <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe5c3;</i></span>
-                        <span class="mdui-chip-title">分类</span>
-                    </div>
-                    <ul class="mdui-menu" id="posttag">
-                        {{ #articleSingle.tags }}
-                        <li class="mdui-menu-item mdui-ripple">
-                            <a href="/tags/{{&.}}">{{&.}}</a>
-                        </li>{{ /articleSingle.tags }}
-                    </ul>
-                    <ul class="mdui-menu" id="postcategory">
-                        {{ #articleSingle.category }}
-                        <li class="mdui-menu-item mdui-ripple">
-                            <a href="/category/{{&.}}">{{&.}}</a>
-                        </li>{{ /articleSingle.category }}
-                    </ul>
-                    </p>
-                </div>
-                    <div class="mdui-divider"></div>
-                    </p>
-                    <div class="mdui-typo mdui-container">
-                        {{ &articleSingle.contentHtml }}
-                    </div>
-                    <p>
-                <div class="mdui-divider"></div>
-                <div class="mdui-container">
-                    <h3>评论</h3>
-                    <div id="waline"></div>
-                    {{ &OPT.commentCode }}
-                    </p>
                 </div>
             </div>
-            <p>
-            <p></p>
+            <div class="mdui-container">
+                </p>
+                <div class="mdui-chip">
+                    <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe8df;</i></span>
+                    <span class="mdui-chip-title">{{ &articleSingle.createDate10 }}</span>
+                </div>
+                <div class="mdui-chip" mdui-menu="{target:'#posttag',position:'top'}">
+                    <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe54e;</i></span>
+                    <span class="mdui-chip-title">标签</span>
+                </div>
+                <div class="mdui-chip" mdui-menu="{target:'#postcategory',position:'top'}">
+                    <span class="mdui-chip-icon mdui-color-theme-accent"><i class="mdui-icon material-icons">&#xe5c3;</i></span>
+                    <span class="mdui-chip-title">分类</span>
+                </div>
+                <ul class="mdui-menu" id="posttag">
+                    {{ #articleSingle.tags }}
+                    <li class="mdui-menu-item mdui-ripple">
+                        <a href="/tags/{{&.}}">{{&.}}</a>
+                    </li>{{ /articleSingle.tags }}
+                </ul>
+                <ul class="mdui-menu" id="postcategory">
+                    {{ #articleSingle.category }}
+                    <li class="mdui-menu-item mdui-ripple">
+                        <a href="/category/{{&.}}">{{&.}}</a>
+                    </li>{{ /articleSingle.category }}
+                </ul>
+                </p>
+            </div>
+            <div class="mdui-divider"></div>
             </p>
+            <div class="mdui-typo mdui-container">
+                {{ &articleSingle.contentHtml }}
+            </div>
+            <p>
+            <div class="mdui-divider"></div>
+            <div class="mdui-container">
+                <h3>评论</h3>
+                <div id="waline"></div>
+                {{ &OPT.commentCode }}
+                </p>
+            </div>
         </div>
-        <div class="mdui-color-theme mdui-row footer-nav" style="width:102%;">
+        <p>
+        <p></p>
+        </p>
+    </div>
+
+    <div class="mdui-row">
+        <div class="mdui-color-theme">
             {{ #articleNewer }}
             <a style="text-decoration: none;" href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 mdui-float-left mdui-text-color-black">
                 <div class="footer-nav-text">
@@ -131,45 +132,46 @@
             </a>
             {{ /articleOlder }}
         </div>
-    </body>
-    <script>
-        //在所有希望保留深色主题的页面里保留
-        if (localStorage.darkTheme)
-            document.body.classList.add("mdui-theme-layout-dark");
+    </div>
+</body>
+<script>
+    //在所有希望保留深色主题的页面里保留
+    if (localStorage.darkTheme)
+        document.body.classList.add("mdui-theme-layout-dark");
 
-        //在有切换按钮的页面保留
-        document.getElementById("switch-theme").addEventListener(
-            "click",
-            () => document.body.classList.toggle("mdui-theme-layout-dark") ?
-            (localStorage.darkTheme = true) :
-            (delete localStorage.darkTheme)
-        );
-    </script>
-    <script src="//unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-    <script>
-        hljs.highlightAll();
-    </script>
-    <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
-        <div class="mdui-container">
-            <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
-                <div class="mdui-col">
-                    {{ #widgetLinkList }}
-                    <div class="mdui-card mdui-m-y-1 mdui-hoverable">
-                        <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
-                            <div class="mdui-card-header">
-                                <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
-                                <div class="mdui-card-header-title">{{ &title }}</div>
-                            </div>
-                        </a>
-                    </div>
-                    {{ /widgetLinkList }}
+    //在有切换按钮的页面保留
+    document.getElementById("switch-theme").addEventListener(
+        "click",
+        () => document.body.classList.toggle("mdui-theme-layout-dark") ?
+        (localStorage.darkTheme = true) :
+        (delete localStorage.darkTheme)
+    );
+</script>
+<script src="//unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
+<script>
+    hljs.highlightAll();
+</script>
+<div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
+    <div class="mdui-container">
+        <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
+            <div class="mdui-col">
+                {{ #widgetLinkList }}
+                <div class="mdui-card mdui-m-y-1 mdui-hoverable">
+                    <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
+                        <div class="mdui-card-header">
+                            <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
+                            <div class="mdui-card-header-title">{{ &title }}</div>
+                        </div>
+                    </a>
                 </div>
+                {{ /widgetLinkList }}
             </div>
         </div>
-        <div class="mdui-dialog-actions">
-            <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
-        </div>
     </div>
+    <div class="mdui-dialog-actions">
+        <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
+    </div>
+</div>
 </body>
 
 </html>
