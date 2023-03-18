@@ -110,20 +110,18 @@
 </script>
 <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
 <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
-    <div class="mdui-container">
-        <div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3 mdui-row-lg-4 mdui-row-xl-4 mdui-m-y-2">
-            <div class="mdui-col">
-                {{ #widgetLinkList }}
-                <div class="mdui-card mdui-m-y-1 mdui-hoverable">
-                    <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
-                        <div class="mdui-card-header">
-                            <img class="mdui-card-header-avatar" src="http://api.xunpan.tk/api/ico/?url={{ &url }}" />
-                            <div class="mdui-card-header-title">{{ &title }}</div>
-                        </div>
-                    </a>
-                </div>
-                {{ /widgetLinkList }}
+    <div class="mdui-dialog-content">
+        <div class="mdui-row mdui-col">
+            {{ #widgetLinkList }}
+            <div class="mdui-card mdui-col-md-6 mdui-m-y-1 mdui-hoverable">
+                <a style="text-decoration: none;" class="mdui-text-color-theme-text" href="{{ &url }}" target="_blank" rel="external nofollow">
+                    <div class="mdui-card-header">
+                        <img class="mdui-card-header-avatar" src="https://api.xinac.net/icon/?url={{ &url }}" />
+                        <div class="mdui-card-header-title">{{ &title }}</div>
+                    </div>
+                </a>
             </div>
+            {{ /widgetLinkList }}
         </div>
     </div>
     <div class="mdui-dialog-actions">
