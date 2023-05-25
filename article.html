@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8">
+    <script src="https://www.unpkg.com/jquery@3.7.0/dist/jquery.min.js"></script>
     <link rel="shortcut icon" href="{{ &OPT.logo }}">
     <meta name="keywords" content="{{ &keyWords }}" />
     <meta name="description" content="{{ &OPT.siteDescription }}" />
@@ -10,7 +11,7 @@
     <link rel="preconnect" href="//cdn.w3cbus.com">
     <meta name="force-rendering" content="webkit" />
     <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
-  <link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css"><link rel="stylesheet" href="https://cdn.w3cbus.com/mdui/docs~1/static/index.68b5d124.css">
+    <link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css">
     <title>{{ &OPT.siteName }}</title>
 </head>
 
@@ -176,6 +177,53 @@
         <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
     </div>
 </div>
+<script>
+    $(function() {
+        //给每一串代码元素增加复制代码节点
+        let preList = $("pre");
+        for (let pre of preList) {
+            //给每个代码块增加上“复制代码”按钮
+            let btn = $("<span class=\"mdui-float-right\" onclick='preCopy(this)'>复制</span>");
+            btn.prependTo(pre);
+        }
+    });
+
+    /**
+     * 执行复制代码操作
+     * @param obj
+     */
+    function preCopy(obj) {
+        //执行复制
+        let btn = $(obj);
+        let pre = btn.parent();
+        //为了实现复制功能。新增一个临时的textarea节点。使用他来复制内容
+        let temp = $("<textarea></textarea>");
+        //避免复制内容时把按钮文字也复制进去。先临时置空
+        btn.text("");
+        temp.text(pre.text());
+        temp.appendTo(pre);
+        temp.select();
+        document.execCommand("Copy");
+        temp.remove();
+        //修改按钮名
+        mdui.snackbar({
+            message: '复制成功'
+        });
+        btn.text("复制");
+        //一定时间后吧按钮名改回来
+        //setTimeout(() => {
+        //    btn.text("复制代码");
+        //}, 1500);
+    }
+
+    /**
+     * 全选文本
+     * @param obj
+     */
+    function selectAll(obj) {
+        $(obj).select();
+    }
+</script>
 </body>
 <style>
     /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
