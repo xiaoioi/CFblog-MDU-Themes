@@ -10,7 +10,7 @@
     <meta name="renderer" content="webkit" />
     <link rel="preconnect" href="//cdn.w3cbus.com">
     <meta name="force-rendering" content="webkit" />
-    <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/default.min.css">
+    <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css">
     <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
     <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
@@ -161,6 +161,41 @@
 <script>
     hljs.highlightAll();
 </script>
+<style>
+.hljs {
+	border: 0;
+	font-family: "Consulas", "Courier New", Courier, mono, serif;
+	font-size: 12px;
+	background: #eee !important;
+	display: block;
+	padding: 1px;
+	margin: 0;
+	width: 100%;
+	font-weight: 200;
+	color: #333;
+	white-space: pre-wrap
+}
+.hljs ul {
+	list-style: decimal;
+	background-color: #fff;
+	margin: 0px 0px 0 40px !important;
+	padding: 0px;
+}
+.hljs ul li {
+	list-style: decimal-leading-zero;
+	border-left: 1px solid #ddd !important;
+	background: #fff;
+	padding: 5px!important;
+	margin: 0 !important;
+	line-height: 14px;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+.hljs ul li:nth-of-type(even) {
+	background-color: #fcfcfc;
+	color: inherit;
+}
+</style>
 <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
     <div class="mdui-dialog-content">
         <div class="mdui-row mdui-col">
