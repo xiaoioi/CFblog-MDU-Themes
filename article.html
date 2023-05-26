@@ -10,6 +10,8 @@
     <meta name="renderer" content="webkit" />
     <link rel="preconnect" href="//cdn.w3cbus.com">
     <meta name="force-rendering" content="webkit" />
+    <script src="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css">
     <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
@@ -107,7 +109,7 @@
                 </ul>
             </div>
             <div class="mdui-divider"></div>
-            <div class="mdui-typo mdui-p-x-2">
+            <div class="text mdui-typo mdui-p-x-2">
                 {{ &articleSingle.contentHtml }}
             </div>
 
@@ -163,37 +165,37 @@
 </script>
 <style>
 .hljs {
-	border: 0;
-	font-family: "Consulas", "Courier New", Courier, mono, serif;
-	font-size: 12px;
-	background: #eee !important;
-	display: block;
-	padding: 1px;
-	margin: 0;
-	width: 100%;
-	font-weight: 200;
-	color: #333;
-	white-space: pre-wrap
+    border: 0;
+    font-family: "Consulas", "Courier New", Courier, mono, serif;
+    font-size: 12px;
+    background: #eee !important;
+    display: block;
+    padding: 1px;
+    margin: 0;
+    width: 100%;
+    font-weight: 200;
+    color: #333;
+    white-space: pre-wrap
 }
 .hljs ul {
-	list-style: decimal;
-	background-color: #fff;
-	margin: 0px 0px 0 40px !important;
-	padding: 0px;
+    list-style: decimal;
+    background-color: #fff;
+    margin: 0px 0px 0 40px !important;
+    padding: 0px;
 }
 .hljs ul li {
-	list-style: decimal-leading-zero;
-	border-left: 1px solid #ddd !important;
-	background: #fff;
-	padding: 5px!important;
-	margin: 0 !important;
-	line-height: 14px;
-	word-break: break-all;
-	word-wrap: break-word;
+    list-style: decimal-leading-zero;
+    border-left: 1px solid #ddd !important;
+    background: #fff;
+    padding: 5px!important;
+    margin: 0 !important;
+    line-height: 14px;
+    word-break: break-all;
+    word-wrap: break-word;
 }
 .hljs ul li:nth-of-type(even) {
-	background-color: #fcfcfc;
-	color: inherit;
+    background-color: #fcfcfc;
+    color: inherit;
 }
 </style>
 <div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
@@ -261,6 +263,24 @@
     function selectAll(obj) {
         $(obj).select();
     }
+</script>
+<script>
+    Fancybox.bind(".text img", {
+        Toolbar: {
+            display: {
+                left: ["infobar"],
+                middle: [
+                    "zoomIn",
+                    "zoomOut",
+                    "toggle1to1",
+                    "rotateCCW",
+                    "rotateCW",
+                    "download",
+                ],
+                right: ["slideshow", "thumbs", "close"],
+            },
+        },
+    });
 </script>
 </body>
 <style>
