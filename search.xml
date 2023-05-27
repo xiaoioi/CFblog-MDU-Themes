@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blogs>
+	<blog>
+		<title>MDU-一款CFblog主题</title>
+		<content>
+## MDU - 一个 Material Design 风格的 CFBlog 主题
+
+你是否喜欢 Material Design 的设计风格？你是否想要拥有一个简洁、美观和易用的个人博客网站？如果是，那么 **MDU** 主题就是为你量身定制的。
+
+**MDU** 是一个基于 CFBlog 的个人博客主题，它采用了 Material Design 的设计原则和组件，打造了一个富有创意和互动性的界面。你可以在这里展示你的技术、设计和创意的作品，分享你的想法和心得，交流信息和经验，吸引粉丝和关注。
+
+**MDU** 主题具有以下特点：
+
+- 响应式布局，适配不同的设备和屏幕尺寸，保证了用户的浏览体验。
+- ~~支持多种功能，如文章分类、标签、归档、评论、搜索、订阅、社交媒体等，方便用户查找和交流。~~
+
+- ~~支持多种语言，如中文、英文、日文等，满足不同用户的需求。~~
+- ~~支持自定义设置，你可以根据自己的喜好修改主题的配色、字体、布局等。~~
+- 免费更新，你可以随时获取最新的版本和功能。
+
+如果你想要拥有一个 Material Design 风格的个人博客网站，那么不要犹豫，赶快下载 **MDU** 主题吧！
+
+源: 与必应的对话， 2023/5/25</content>
+		<url>https://blog.xiaoioi.tk/article/000001/index.html</url>
+		<time>2022-09-06</time>
+	</blog>
+	<blog>
+		<title>自定义MC披风 BE</title>
+		<content>
+# 教程
+打开 Minecraft 安装包
+进入 /assets/skin_packs/persona/ 
+PC建 persona 文件夹
+新建文件 manifest.json
+```
+{
+    "format_version": 1,
+    "header": {
+        "name": "皮肤包名称",
+        "uuid": "UUID",
+        "version": [
+            0,
+            1,
+            1
+        ]
+    },
+    "modules": [
+        {
+            "type": "skin_pack",
+            "uuid": "UUID",
+            "version": [
+                0,
+                0,
+                1
+            ]
+        }
+    ]
+}
+```
+geometry.json
+示例里找
+
+skins.json
+```
+{
+  "skins": [
+	{
+      "localization_name": "皮肤名",
+      "geometry": "geometry.humanoid.custom",    //Alex geometry.humanoid.customSlim
+      "texture": "皮肤图.png",
+      "cape": "披风图.png",
+      "type": "free"
+    }
+  ],
+  "serialize_name": "By ",
+  "localization_name": "By "
+}
+```
+# PC导入
+[PC导入工具](https://www.123pan.com/s/Q6F8Vv-Updxh)
+
+1. 打开显示隐藏文件
+2. 打开IObit Unlocker
+3. Add
+4. 选择 C:/ProgramFiles/WindowsApps/Microsoft.MinecraftUWP_xxx/date/skin_packs
+5. Unlock&amp;delete Exit
+6. Add
+7. 选择 你新建的 persona 文件夹
+8. Unlock&amp;Copy C:/ProgramFiles/WindowsApps/Microsoft.MinecraftUWP_xxx/date/skin_packs
+
+# 视频
+&amp;lt;iframe src="//player.bilibili.com/player.html?aid=889594622&amp;bvid=BV1tP4y1x7x6&amp;cid=379688565&amp;page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"&amp;gt; &amp;lt;/iframe&amp;gt;
+&amp;lt;iframe src="//player.bilibili.com/player.html?bvid=BV1vY4y1R7iD" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"&amp;gt; &amp;lt;/iframe&amp;gt;
+# 示例
+[粗臂版 细臂版](https://www.123pan.com/s/Q6F8Vv-Spdxh)  
+[PC导入工具](https://www.123pan.com/s/Q6F8Vv-Updxh)
+</content>
+		<url>https://blog.xiaoioi.tk/article/000004/index.html</url>
+		<time>2023-01-28</time>
+	</blog>
+	<blog>
+		<title>免费获取 EU.org 顶级域名</title>
+		<content># 介绍
+
+EU.ORG这个网站是欧盟组织下的Paul Mockapetris这个人在1996年创建的，免费域名服务一直运行至今，相当地稳定，任何个人或组织都可以免费申请EU.ORG域名，到目前为止此域名没有任何限制，可以修改NS记录等。
+
+# 优点
+
+从1996到如今（2020）已运行长达24年，历史悠久，非常稳定；
+
+支持NS记录，意味着支持所有域名记录；
+
+可长期使用，因为官方没有明确说明使用时间；
+
+没有发现任何限制；
+
+虽然它本身是二级，但是咕鸽，cloudflare，DNSPOD，https://hstspreload.org 等认可为顶级域名。
+
+# 缺点
+
+之前因为长期无限制的使用，国内网络http会直接被重置，所以即使开了强制https，也不会自动跳转到https，需要自己添加。但是现在，并没有发现这种情况了。
+## 移动已无
+
+
+# 教程
+
+
+1.点击这里进入注册界面
+这个注册要注意了，必须填的是真实的地址给个例子，名称和邮箱改一下就可以用了当然你也可以自己修改，只要是真实的地址就行。／https://shenfendaquan.com/
+
+Name：
+
+E-mail：
+
+Address (line 1)：United States
+
+Address (line 2)：1940 Jeramy Knolls
+
+Address (line 3)
+
+Address (line 4)
+
+Address (line 5)
+
+Country：United States
+
+Phone：+1 860 393 4579
+
+Fax：0046840
+
+2.打开你的邮箱,点击验证链接,前往后点击蓝色的Validate
+
+3.点击login登录,使用XXXX-FREE和密码登录
+
+4.点击New domain创建域名
+
+在Complete domain name输入name.eu.org
+（例：ikun.eu.org）
+更多后缀请参照开放域名注册列表
+
+5.选择server names，并在下面填上你的 NS 地址
+
+![image](https://p.sda1.dev/9/7c0ba10e3dba98d03adb5bbc098547b8/microsoft_edge_screenshot_2023年1月25日 GMT_08_00 下午3_34_23.png.jpg)
+
+6.点击 submit，出现done即可。
+
+如果没成功，那可能有 reCAPTCHA，需要魔法
+
+7.打开你的 DNS 平台，添加域名即可。
+
+（cloudflare不可以直接绑定 见文章最后）
+
+8.等待最少两天，最长甚至一个月以上，申请通过后会有邮件提醒。
+
+
+
+# 解决的方法
+
+注册[TopDN](https://topdn.net/)账号，并进入到Dashboard
+
+点击添加域名
+
+填入域名和邮箱，点击create即为添加成功
+
+找到页面下的三条名称服务器，并复制
+
+打开eu.org的官网界面，进入到自己域名管理界面
+
+进入Nameservers
+
+勾选第一个server names，并将上面复制的三条，替换下面的内容，点击submit即可
+
+等待大概10分钟，再去cf主页面添加站点，此时可以顺利地进行托管（如果还不行，请耐心多等待一会）
+
+
+&amp;lt;div class="mdui-card mdui-color-blue mdui-typo" style="height:50;"&amp;gt;
+&amp;lt;div class="mdui-m-t-2 mdui-m-y-2"&amp;gt;
+&amp;lt;i class="mdui-icon material-icons"&amp;gt;create&amp;lt;/i&amp;gt;
+原文链接 : &amp;lt;a href="https://blog.ltya.top/posts/eu-org.shtml"&amp;gt;https://blog.ltya.top/posts/eu-org.shtml&amp;lt;/a&amp;gt;
+&amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+</content>
+		<url>https://blog.xiaoioi.tk/article/000003/index.html</url>
+		<time>2022-07-25</time>
+	</blog>
+	<blog>
+		<title>CF-Blog搭建步骤</title>
+		<content>&amp;gt; 这是一个运行在cloudflare workers 上的博客程序(blog),使用 cloudflare KV作为数据库,无其他依赖.
+兼容静态博客的速度,以及动态博客的灵活性,方便搭建不折腾.
+演示地址: https://blog.gezhong.vip
+
+# 主要特点
+- 使用workers提供的KV作为数据库
+- 使用cloudflare缓存html来降低KV的读写
+- 所有html页面均为缓存,可达到静态博客的速度
+- 使用KV作为数据库,可达到wordpress的灵活性
+- 后台使用markdown语法,方便快捷
+- 一键发布(页面重构+缓存清理)
+
+# 承载能力
+- KV基本不存在瓶颈,因为使用了缓存,读写很少
+- 唯一瓶颈是 workers的日访问量10w,大约能承受2万IP /日
+- 文章数:1G存储空间,几万篇问题不大
+
+----
+# 部署步骤
+### 创建workers 和KV
+&amp;gt; 新建一个KV(名字随意)和一个workers,并绑定新建的KV到新建的workers,变量名称CFBLOG注意大写,绑定后是这效果
+补充一下绑定步骤:workers-&amp;gt;点击刚才新建的worker—&amp;gt;设置—&amp;gt;KV 命名空间绑定—&amp;gt;编辑变量—&amp;gt;变量名称:”CFBLOG”—&amp;gt;KV 命名空间:选择刚才的新建的KV
+### 域名设置
+添加一个域名DNS: 例如blog.gezhong.vip,IP随意,橙色云朵必须打开
+
+域名绑定到workers:域名—&amp;gt; workers —&amp;gt;添加路由 https://blog.gezhong.vip/*
+
+获取缓存API token:域名概述—&amp;gt;右下角,记录区域ID,以及获取一个清理缓存的 API 令牌,如图
+
+![alt ](https://s3.ax1x.com/2020/12/22/rs9UOJ.png)
+
+粘贴源码中[index.js](https://github.com/xiaoioi/CFblog-MDU-Themes/index_plus.js)内容到workers,根据需求修改参数
+
+进入/admin进行设置 和发布文章
+
+
+如果文章ID:000NaN: 到cloudflare后台,把kv里的数据全都删掉,新建一个变量"SYSTEM_INDEX_NUM",值0
+
+
+
+    &amp;lt;!doctype html&amp;gt;
+    &amp;lt;html&amp;gt;
+        &amp;lt;head&amp;gt; 
+            &amp;lt;meta charset="UTF-8"&amp;gt; 
+            &amp;lt;meta name="viewport" id="viewport" content="width=device-width, initial-scale=1"&amp;gt; 
+            &amp;lt;link rel="shortcut icon" href="favicon.png" type="image/x-icon"&amp;gt;
+            &amp;lt;title&amp;gt;&amp;lt;/title&amp;gt;
+        &amp;lt;/head&amp;gt; 
+        &amp;lt;body&amp;gt; 
+            &amp;lt;h1&amp;gt;&amp;lt;/h1&amp;gt;
+            &amp;lt;div&amp;gt;
+                Hello World! 
+            &amp;lt;/div&amp;gt;  
+        &amp;lt;/body&amp;gt;
+    &amp;lt;/html&amp;gt;</content>
+		<url>https://blog.xiaoioi.tk/article/000002/index.html</url>
+		<time>2022-09-07</time>
+	</blog>
+</blogs>
