@@ -20,7 +20,7 @@
     <title>{{ &OPT.siteName }}</title>
     {{ &OPT.codeBeforHead }}
 </head>
-<body class="mdui-p-x-1 mdui-theme-primary-indigo mdui-drawer-body-left mdui-drawer-full-height mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
+<body class="mdui-theme-primary-indigo mdui-drawer-body-left mdui-drawer-full-height mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
     <div class="mc-appbar mdui-appbar mdui-appbar-fixed">
         <div class="mdui-toolbar mdui-color-indigo mdui-drawer-full-height mdui-shadow-3">
             <a href="javascript:;" class="mdui-btn mdui-btn-icon">
@@ -46,11 +46,11 @@
             </div>
         </div>
         <div class="search">
-            <i class="material-icons search-icon search-start"></i>
+            <i class="search-start"></i>
             <div class="mdui-textfield mdui-textfield-floating-label">
             <label class="mdui-textfield-label">Searching...</label>
             <input type="text" class="mdui-textfield-input search-input" /></div>
-            <i class="material-icons search-icon search-clear"></i>
+            <i class="search-clear"></i>
             <div class="search-results mdui-list"></div>
         </div>
         <li class="mdui-divider"></li>
@@ -132,25 +132,25 @@
     </div>
 
     <div class="mdui-row mdui-p-x-1">
-        <div class="mdui-color-theme mdui-p-x-1">
-            {{ #articleNewer }}
+        <div class="mdui-p-x-1">
             <a style="text-decoration: none;" href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 mdui-float-left mdui-text-color-black">
+            {{ #articleNewer }}
                 <div class="footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_back</i>
                     <span class="footer-nav-direction mdui-hidden-xs-down">上一篇</span>
                     <div class="footer-nav-chapter mdui-hidden-xs-down">{{ &title }}</div>
                 </div>
-            </a>
             {{ /articleNewer }}
-            {{ #articleOlder }}
+            </a>
             <a style="text-decoration: none;" href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 mdui-float-right mdui-text-color-black mdui-text-right">
+            {{ #articleOlder }}
                 <div class="footer-nav-text">
                     <i class="mdui-icon material-icons">arrow_forward</i>
                     <span class="footer-nav-direction">下一篇</span>
                     <div class="footer-nav-chapter">{{ &title }}</div>
                 </div>
-            </a>
             {{ /articleOlder }}
+            </a>
         </div>
     </div>
 </body>
