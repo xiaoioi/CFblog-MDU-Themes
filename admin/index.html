@@ -31,20 +31,7 @@
 </head>
 
 <body>
-    <script>
-        //清除所有cookie函数
-        function clearAllCookie() {
-            var keys = document.cookie.match(/[^ =;]+(?=\=)/g);
-            if (keys) {
-                for (var i = keys.length; i--;)
-                    document.cookie = keys[i] + '=0;expires=' + new Date(0).toUTCString()
-            }
-        }
-    </script>
-
-
-
-    <nav class="navbar navbar-default " role="navigation">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
 
             <div>
@@ -63,9 +50,6 @@
                     </li>
                     <li>
                         <a href="#pub" data-toggle="tab">发布</a>
-                    </li>
-                    <li>
-                        <a onclick="clearAllCookie()"><i class="mdi mdi-logout-variant"></i> 退出登录</a>
                     </li>
                 </ul>
             </div>
