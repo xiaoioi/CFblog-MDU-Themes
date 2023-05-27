@@ -132,10 +132,10 @@
             </div>
         </div>
     </div>
-    <div class="footer-nav mdui-color-theme">
+    <div class="footer-nav mdui-color-theme mdui-p-x-1">
         <div class="mdui-container">
             <div class="mdui-row">
-                <div class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 footer-nav-left mdui-text-left">
+                <div class="mdui-ripple mdui-color-theme mdui-col-xs-6 mdui-col-sm-6 footer-nav-left mdui-text-left">
                     {{ #articleNewer }}
                     <a href="{{ &url }}" class="mdui-text-color-white" style="text-decoration: none;">
                         <div class="footer-nav-text">
@@ -146,7 +146,7 @@
                     </a>
                     {{ /articleNewer }}
                 </div>
-                <div class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 footer-nav-right mdui-text-right">
+                <div class="mdui-ripple mdui-color-theme mdui-col-xs-6 mdui-col-sm-6 footer-nav-right mdui-text-right">
                     {{ #articleOlder }}
                     <a href="{{ &url }}" class="mdui-text-color-white" style="text-decoration: none;">
                         <div class="footer-nav-text">
@@ -216,7 +216,13 @@
         color: inherit;
     }
 </style>
-<div style="" class="mdui-dialog" id="link">
+<div id="link" style="" class="mc-account mdui-dialog">
+    <div class="mdui-dialog-title mdui-color-theme">
+        <button class="mdui-btn mdui-btn-icon close" mdui-dialog-close>
+            <i class="mdui-icon material-icons">close</i>
+        </button>
+        友情链接
+    </div>
     <div class="mdui-dialog-content">
         <div class="mdui-row mdui-col">
             {{ #widgetLinkList }}
@@ -230,9 +236,6 @@
             </div>
             {{ /widgetLinkList }}
         </div>
-    </div>
-    <div class="mdui-dialog-actions">
-        <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
     </div>
 </div>
 <script>

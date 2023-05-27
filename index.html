@@ -135,7 +135,14 @@
     );
 </script>
 <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
-<div style="height:100%;width:100%;max-width:100%;top:0;" class="mdui-dialog" id="link">
+
+<div id="link" style="" class="mc-account mdui-dialog">
+    <div class="mdui-dialog-title mdui-color-theme">
+        <button class="mdui-btn mdui-btn-icon close" mdui-dialog-close>
+            <i class="mdui-icon material-icons">close</i>
+        </button>
+            友情链接
+    </div>
     <div class="mdui-dialog-content">
         <div class="mdui-row mdui-col">
             {{ #widgetLinkList }}
@@ -149,9 +156,6 @@
             </div>
             {{ /widgetLinkList }}
         </div>
-    </div>
-    <div class="mdui-dialog-actions">
-        <button class="mdui-btn mdui-ripple" mdui-dialog-close>关</button>
     </div>
 </div>
 </body>
