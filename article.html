@@ -14,12 +14,13 @@
     <link rel="stylesheet" href="https://unpkg.com/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
     <link rel="stylesheet" href="//unpkg.com/@highlightjs/cdn-assets@11.7.0/styles/github.min.css">
     <script src="//unpkg.com/@highlightjs/cdn-assets@11.7.0/highlight.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css" />
     <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
     <link rel="stylesheet" href="https://cdn.w3cbus.com/library/mdui/1.0.2/css/mdui.min.css">
     <title>{{ &OPT.siteName }}</title>
     {{ &OPT.codeBeforHead }}
 </head>
+
 <body class="mdui-theme-primary-indigo mdui-drawer-body-left mdui-drawer-full-height mdui-theme-accent-pink mdui-theme-layout-auto mdui-appbar-with-toolbar">
     <div class="mc-appbar mdui-appbar mdui-appbar-fixed">
         <div class="mdui-toolbar mdui-color-indigo mdui-drawer-full-height mdui-shadow-3">
@@ -48,8 +49,9 @@
         <div class="search">
             <i class="search-start"></i>
             <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">Searching...</label>
-            <input type="text" class="mdui-textfield-input search-input" /></div>
+                <label class="mdui-textfield-label">Searching...</label>
+                <input type="text" class="mdui-textfield-input search-input" />
+            </div>
             <i class="search-clear"></i>
             <div class="search-results mdui-list"></div>
         </div>
@@ -130,27 +132,32 @@
             </div>
         </div>
     </div>
-
-    <div class="mdui-row mdui-p-x-1">
-        <div class="mdui-p-x-1">
-            <a style="text-decoration: none;" href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 mdui-float-left mdui-text-color-black">
-            {{ #articleNewer }}
-                <div class="footer-nav-text">
-                    <i class="mdui-icon material-icons">arrow_back</i>
-                    <span class="footer-nav-direction mdui-hidden-xs-down">上一篇</span>
-                    <div class="footer-nav-chapter mdui-hidden-xs-down">{{ &title }}</div>
+    <div class="footer-nav mdui-color-theme">
+        <div class="mdui-container">
+            <div class="mdui-row">
+                <div class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 footer-nav-left mdui-text-left">
+                    {{ #articleNewer }}
+                    <a href="{{ &url }}" class="mdui-text-color-white" style="text-decoration: none;">
+                        <div class="footer-nav-text">
+                            <i class="mdui-icon material-icons">arrow_back</i>
+                            <span class="footer-nav-direction mdui-hidden-xs-down">上一篇</span>
+                            <div class="footer-nav-chapter mdui-hidden-xs-down">{{ &title }}</div>
+                        </div>
+                    </a>
+                    {{ /articleNewer }}
                 </div>
-            {{ /articleNewer }}
-            </a>
-            <a style="text-decoration: none;" href="{{ &url }}" title="{{ &title }}" rel="next" class="mdui-ripple mdui-color-theme mdui-col-xs-10 mdui-col-sm-6 mdui-float-right mdui-text-color-black mdui-text-right">
-            {{ #articleOlder }}
-                <div class="footer-nav-text">
-                    <i class="mdui-icon material-icons">arrow_forward</i>
-                    <span class="footer-nav-direction">下一篇</span>
-                    <div class="footer-nav-chapter">{{ &title }}</div>
+                <div class="mdui-ripple mdui-color-theme mdui-col-xs-2 mdui-col-sm-6 footer-nav-right mdui-text-right">
+                    {{ #articleOlder }}
+                    <a href="{{ &url }}" class="mdui-text-color-white" style="text-decoration: none;">
+                        <div class="footer-nav-text">
+                            <i class="mdui-icon material-icons">arrow_forward</i>
+                            <span class="footer-nav-direction">下一篇</span>
+                            <div class="footer-nav-chapter">{{ &title }}</div>
+                        </div>
+                    </a>
+                    {{ /articleOlder }}
                 </div>
-            {{ /articleOlder }}
-            </a>
+            </div>
         </div>
     </div>
 </body>
@@ -172,39 +179,42 @@
     hljs.highlightAll();
 </script>
 <style>
-.hljs {
-    border: 0;
-    font-family: "Consulas", "Courier New", Courier, mono, serif;
-    font-size: 12px;
-    background: #eee !important;
-    display: block;
-    padding: 1px;
-    margin: 0;
-    width: 100%;
-    font-weight: 200;
-    color: #333;
-    white-space: pre-wrap
-}
-.hljs ul {
-    list-style: decimal;
-    background-color: #fff;
-    margin: 0px 0px 0 40px !important;
-    padding: 0px;
-}
-.hljs ul li {
-    list-style: decimal-leading-zero;
-    border-left: 1px solid #ddd !important;
-    background: #fff;
-    padding: 5px!important;
-    margin: 0 !important;
-    line-height: 14px;
-    word-break: break-all;
-    word-wrap: break-word;
-}
-.hljs ul li:nth-of-type(even) {
-    background-color: #fcfcfc;
-    color: inherit;
-}
+    .hljs {
+        border: 0;
+        font-family: "Consulas", "Courier New", Courier, mono, serif;
+        font-size: 12px;
+        background: #eee !important;
+        display: block;
+        padding: 1px;
+        margin: 0;
+        width: 100%;
+        font-weight: 200;
+        color: #333;
+        white-space: pre-wrap
+    }
+
+    .hljs ul {
+        list-style: decimal;
+        background-color: #fff;
+        margin: 0px 0px 0 40px !important;
+        padding: 0px;
+    }
+
+    .hljs ul li {
+        list-style: decimal-leading-zero;
+        border-left: 1px solid #ddd !important;
+        background: #fff;
+        padding: 5px !important;
+        margin: 0 !important;
+        line-height: 14px;
+        word-break: break-all;
+        word-wrap: break-word;
+    }
+
+    .hljs ul li:nth-of-type(even) {
+        background-color: #fcfcfc;
+        color: inherit;
+    }
 </style>
 <div style="" class="mdui-dialog" id="link">
     <div class="mdui-dialog-content">
