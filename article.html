@@ -47,16 +47,16 @@
             </div>
         </div>
         <div class="search">
-            <i class="search-start"></i>
+            <div class="search-start"></div>
             <div class="mdui-textfield mdui-textfield-floating-label">
                 <label class="mdui-textfield-label">Searching...</label>
                 <input type="text" class="mdui-textfield-input search-input" />
             </div>
-            <i class="search-clear"></i>
+            <div class="search-clear"></div>
             <div class="search-results mdui-list"></div>
         </div>
-        <li class="mdui-divider"></li>
-        <ul class="mdui-list" mdui-collapse="{accordion: true}">
+        <div class="mdui-divider"></div>
+        <div class="mdui-list" mdui-collapse="{accordion: true}">
             <li class="mdui-list-item mdui-ripple">
                 <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
                 <a href="/" class="mdui-list-item-content">主页</a>
@@ -77,7 +77,7 @@
             </a>
             {{ /widgetMenuList }}
             </li>
-        </ul>
+        </div>
         <div class="copyright">
             <p>{{ &OPT.copyRight }}</p>
         </div>
@@ -179,6 +179,35 @@
     hljs.highlightAll();
 </script>
 <style>
+    /*借鉴的MDX()*/
+    .mdx-danger {
+        border-left-color: #c80000 !important
+    }
+
+    .mdui-theme-layout-dark .mdx-danger>p,
+    .mdx-danger>p {
+        color: #c80000 !important
+    }
+
+    .mdx-warning {
+        border-left-color: #FFCE5D !important
+    }
+
+    .mdui-theme-layout-dark .mdx-warning>p,
+    .mdx-warning>p {
+        color: #FFCE5D !important
+    }
+
+    .mdx-info {
+        border-left-color: #74D2FF !important
+    }
+
+    .mdui-theme-layout-dark .mdx-info>p,
+    .mdx-info>p {
+        color: #74D2FF !important
+    }
+
+    /*借鉴的MDX()结束*/
     .hljs {
         border: 0;
         font-family: "Consulas", "Courier New", Courier, mono, serif;
@@ -244,7 +273,7 @@
         let preList = $("pre");
         for (let pre of preList) {
             //给每个代码块增加上“复制代码”按钮
-            let btn = $("<span class=\"mdui-float-right\" onclick='preCopy(this)'>复制</span>");
+            let btn = $("<span class=\"mdui-float-right mdui-btn mdui-btn-icon mdui-icon material-icons\" onclick='preCopy(this)'><i class='mdui-icon material-icons'>content_copy</i></span>");
             btn.prependTo(pre);
         }
     });
@@ -270,7 +299,7 @@
         mdui.snackbar({
             message: '复制成功'
         });
-        btn.text("复制");
+        btn.innerHTML = "<i class='mdui-icon material-icons'>content_copy</i>";
         //一定时间后吧按钮名改回来
         //setTimeout(() => {
         //    btn.text("复制代码");
@@ -307,6 +336,8 @@
 </body>
 <script>
     // 获取搜索框、搜索按钮、清空搜索、结果输出对应的元素
+    var all = document.querySelector('.mc-drawer .mdui-card-media');
+    var ala = document.querySelector('.mc-drawer .mdui-list');
     var searchBtn = document.querySelector('.search-start');
     var searchClear = document.querySelector('.search-clear');
     var searchInput = document.querySelector('.search-input');
@@ -356,6 +387,8 @@
         searchInput.value = '';
         searchResults.style.display = 'none';
         searchClear.style.display = 'none';
+        all.style.display = 'block';
+        ala.style.display = 'block';.
     }
 
     // 输入框内容变化后就开始匹配，可以不用点按钮
@@ -380,6 +413,8 @@
             itemDiv.innerText = '请输入有效内容...';
             searchResults.appendChild(itemDiv);
         } else {
+            all.style.display = 'none';
+            ala.style.display = 'none';
             // 合法输入值的情况
             searchInit();
             searchValue = searchInput.value;
@@ -395,6 +430,8 @@
         searchResults.innerHTML = '';
         searchResults.style.display = 'block';
         searchClear.style.display = 'block';
+        all.style.display = 'block';
+        ala.style.display = 'block';
     }
 
     function searchMatching(arr1, arr2, input) {

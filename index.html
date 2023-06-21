@@ -43,12 +43,13 @@
         <div class="search">
             <i class="material-icons search-icon search-start"></i>
             <div class="mdui-textfield mdui-textfield-floating-label">
-            <label class="mdui-textfield-label">Searching...</label>
-            <input type="text" class="mdui-textfield-input search-input" /></div>
+                <label class="mdui-textfield-label">Searching...</label>
+                <input type="text" class="mdui-textfield-input search-input" />
+            </div>
             <i class="material-icons search-icon search-clear"></i>
             <div class="search-results mdui-list"></div>
         </div>
-        <li class="mdui-divider"></li>
+        <div class="mdui-divider"></div>
         <ul class="mdui-list" mdui-collapse="{accordion: true}">
             <li class="mdui-list-item mdui-ripple">
                 <a href="/" <i class="mdui-list-item-icon mdui-icon material-icons mdui-text-color-light-blue">home</i></a>
@@ -141,7 +142,7 @@
         <button class="mdui-btn mdui-btn-icon close" mdui-dialog-close>
             <i class="mdui-icon material-icons">close</i>
         </button>
-            友情链接
+        友情链接
     </div>
     <div class="mdui-dialog-content">
         <div class="mdui-row mdui-col">
@@ -309,6 +310,35 @@
     }
 </script>
 <style>
+    /*借鉴的MDX()*/
+    .mdx-danger {
+        border-left-color: #c80000 !important
+    }
+
+    .mdui-theme-layout-dark .mdx-danger>p,
+    .mdx-danger>p {
+        color: #c80000 !important
+    }
+
+    .mdx-warning {
+        border-left-color: #FFCE5D !important
+    }
+
+    .mdui-theme-layout-dark .mdx-warning>p,
+    .mdx-warning>p {
+        color: #FFCE5D !important
+    }
+
+    .mdx-info {
+        border-left-color: #74D2FF !important
+    }
+
+    .mdui-theme-layout-dark .mdx-info>p,
+    .mdx-info>p {
+        color: #74D2FF !important
+    }
+
+    /*借鉴的MDX()结束*/
     /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
     html {
         line-height: 1.15;
