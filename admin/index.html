@@ -1,339 +1,423 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-	<title>CF-blog后台</title>
+    <meta charset="utf-8" />
+    <title>管理面板</title>
     <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/gdtool/zhaopp/cfblog/favicon.ico" />
-	<link rel="shortcut icon" type="image/x-icon"  href="https://cdn.jsdelivr.net/gh/gdtool/zhaopp/cfblog/favicon.ico"/>
-    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
-    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/examples/css/style.css" />-->
+    <link rel="shortcut icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/gdtool/zhaopp/cfblog/favicon.ico" />
+    <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!--使用https://github.com/awa-qwq/CF-BLOG-MDUI/-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/css/editormd.css" />
-    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap-select/1.9.4/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-    
-    <link href="http://lyear.itshubao.com/css/style.min.css" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdn.staticfile.org/bootstrap-select/1.9.4/css/bootstrap-select.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css" />
+
+    <link rel="stylesheet" href="//unpkg.com/mdui@1.0.2/dist/css/mdui.min.css" />
     <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/i18n/defaults-zh_CN.min.js"></script>
-	<style>
-		.bootstrap-select>.dropdown-toggle {
-		z-index:auto;
-		}
-	</style>
-	
+    <style>
+        .bootstrap-select>.dropdown-toggle {
+            z-index: auto;
+        }
+    </style>
 </head>
+
 <body>
+    <div class="mdui-tab mdui-tab-centered" mdui-tab>
+        <a href="/" class="mdui-btn mdui-ripple">首页</a>
+        <a href="#list" class="mdui-btn mdui-ripple" data-toggle="tab">我的文章</a>
+        <a href="#new" class="mdui-btn mdui-ripple" data-toggle="tab">新建文章</a>
+        <a href="#config" class="mdui-btn mdui-ripple" data-toggle="tab">设置</a>
+        <a href="#about" class="mdui-btn mdui-ripple" data-toggle="tab">关于</a>
+        <a class="mdui-btn mdui-ripple" onclick="publish()">发布&amp;更新</a>
+    </div>
+    <div class="tab-content" id="myTabContent" style="padding-top: 60px;">
+        <div class="tab-pane fade" id="list">
+            <div class="container">
+                <table class="mdui-table" id="articleList">
+                    <tbody>
+                        <tr>
+                            <td>ID</td>
+                            <td>标题</td>
+                            <td>创建日期</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="hidden" name="page" id="page" value="1" />
+                <button id="loadmore" class="mdui-btn mdui-btn-raised mdui-ripple">加载更多...</button>
+            </div>
+        </div>
 
-<nav class="navbar navbar-default " role="navigation">
-	<div class="container-fluid">
+        <div class="tab-pane fade in active" id="new">
 
-	<div>
-		<ul id="myTab" class="nav nav-tabs">
-			<li>
-				<a href="/" >CF-blog</a>
-			</li>
-			<li>
-				<a href="#list" data-toggle="tab">我的文章</a>
-			</li>
-			<li  class="active">
-				<a href="#new" data-toggle="tab">新建</a>
-			</li>
-			<li>
-				<a href="#config" data-toggle="tab">设置</a>
-			</li>
-			<li>
-				<a href="#pub" data-toggle="tab">发布</a>
-			</li>
-		</ul>
-	</div>
-	</div>
-</nav>
-<div id="myTabContent" class="tab-content" style="padding-top: 60px;">
-	<div class="tab-pane fade" id="list">
-		<div class="container" >
-			<table class="table  table-striped" id="articleList">
-				  <tr><td>ID</td><td>标题</td><td>创建日期</td></tr>
-			</table>
-			<input type="hidden"  name="page" id="page" value='1'>
-			<a id="loadmore" class="btn btn-default">加载更多...</a>
-		</div> 
-	</div>
-	<div class="tab-pane fade in active" id="new">
-		<div class="container">
-			<h3 id="labelNew">新增<span style="color: red;">*</span></h3>   
-			<form id="addNewForm"  class="form-inline" >
-				<div class="form-group" style="width: 98%">
-					<input type="hidden" class="form-control" name="id" id="id" >
-					<input type="text" class="form-control" name="title" id="title" placeholder="标题" style="width: 100%;" required="true">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">特色图片</label>
-					<input type="url" class="form-control" style="width: 400px;"  name="img" id="img" placeholder="" >
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">永久链接</label>
-					<input type="text" class="form-control" name="link" id="link" placeholder="" required="true">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">创建日期<span style="color: red;">*</span></label>
-					<input type="datetime-local" class="form-control" id="createDate" name="createDate" placeholder=""  required="true">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">分类<span style="color: red;">*</span></label>
-					<select class="selectpicker" multiple name="category[]" id="category">
-					</select>
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">标签</label>
-					<input type="text" class="form-control" name="tags" id="tags" placeholder="标签1,标签2">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">权重</label>
-					<input type="text" class="form-control" name="priority" id="priority" value='0.5' placeholder="权重">
-				</div>
-				<div class="form-group">
-					<label for="exampleInputEmail2">更新频率</label>
-					    <select class="form-control" id="changefreq" name="changefreq">
-						<option value="daily" selected  = "selected" >daily</option>
-						<option value="hourly" >hourly</option>
-						<option value="weekly" >weekly</option>
-						<option value="monthly" >monthly</option>
-						<option value="yearly" >yearly</option>
-						<option value="never" >never</option>
-						<option value="always" >always</option>
-					    </select>
-				</div>
-					<a  tabindex="0"  role="button"  type="submit" id="btn_saveAddNew" class="btn btn-default" onclick="saveAddNew()">保存</a>
-					
-				<div id="content"><textarea></textarea></div>
-			</form>
-		</div>
-	</div>
-	
-	<div class="tab-pane fade" id="config">
-		
-		<div class="container" >
-			<form id="configForm" role="form" >
-				<div class="form-group">
-				    <label for="name">分类, 例:<code>["类别A","类别B","类别C","类别D"]</code></label>
-					<textarea class="form-control" id="WidgetCategory" name="WidgetCategory" rows="3" placeholder='["分类A","分类B"]'></textarea>
-				</div>
-	
-				<div class="form-group">
-				    <label for="name">菜单, 例:<code>[{"title":"技术文章","url":"/category/技术文章"},{"title":"管理","url":"/admin"}]</code></label>
-					<textarea class="form-control" id="WidgetMenu" name="WidgetMenu" rows="5"  placeholder='[
-	{"title":"菜单A"	,"url":"/category/菜单A"},
-	{"title":"菜单B"	,"url":"/category/菜单B"}
-]'></textarea>
-				</div>
-				<div class="form-group">
-				    <label for="name">其他链接, 例:<code>[{"title":"我的好友","url":"https://blog.gezhong.vip/"},{"title":"谷歌","url":"https://www.google.com/"}]</code></label>
-					<textarea class="form-control" id="WidgetLink" name="WidgetLink" rows="5"  placeholder='[
-	{"title":"好友"	,"url":"https://blog.gezhong.vip/"},
-	{"title":"谷歌"	,"url":"https://www.google.com/"}
-]'></textarea>
-				</div>
-				<a  tabindex="0"  role="button"  type="submit" id="btn_saveConfig" class="btn btn-default" onclick="saveConfig()">保存</a>
-			</form>
-			
+            <div class="container">
+                <h3 id="labelNew">新建文章</h3>
 
-			<form id="importForm" role="form" >
-				<div class="form-group">
-				    <label for="name">导出/导入</label>
-					<textarea class="form-control" id="importJson" name="importJson" rows="3" placeholder='复制完整的导出json'></textarea>
-				</div>
+                <form id="addNewForm" class="form-inline">
 
-				<a  tabindex="0"  role="button"  type="submit" id="btn_import" class="btn btn-default" onclick="importBlog()">导入</a>
-				<a  tabindex="0"  role="button"  type="submit" id="btn_export" class="btn btn-default"  href="/admin/export/" >导出</a>
-			</form>
+                    <div class="form-group" style="width: 98%">
+                        <div class="mdui-textfield ">
+                            <label class="mdui-textfield-label">标题*</label>
+                            <input class="mdui-textfield-input" type="text" name="title" id="title" />
+                        </div>
+                    </div>
 
-			
-		</div>
-	</div>
+                    <div class="form-group">
+                        <div class="mdui-textfield ">
+                            <label class="mdui-textfield-label">特色图片</label>
+                            <input type="url" class="mdui-textfield-input" style="width: 400px;" name="img" id="img" placeholder="">
+                            <div class="mdui-textfield-helper">
+                                首页文章标题旁的图片
+                            </div>
+                        </div>
+                    </div>
 
-	<div class="tab-pane fade" id="pub">
-		<div class="container" >
-			<div class="jumbotron" >
-				<p class="lead">
-				由于前端使用缓存,以下操作需要发布:新建文章、发布文章、修改后台配置、修改workers配置</br>
-				前端生效需要ctrl+F5 强制刷新
-				</p>
-				
-				<a href="#" class="btn btn-default" onclick="publish()">发布</a>
-			</div>
-		</div>
-	</div>	
-</div>
+                    <div class="form-group">
+                        <div class="mdui-textfield ">
+                            <label class="mdui-textfield-label">永久链接</label>
+                            <input class="mdui-textfield-input" type="link" name="link" id="title" placeholder="index" />
+                            <div class="mdui-textfield-helper">
+                                默认自动生成
+                            </div>
+                        </div>
+                    </div>
 
-<script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/editormd.js"></script>   
-<script type="text/javascript">
-	$(function() {
-		$('#myTab li:eq(0) 1').tab('show');
-		//获取分类
-		var categoryJson = <!--{categoryJson}-->;
-		//获取菜单
-		var menuJson = <!--{menuJson}-->;
-		var linkJson = <!--{linkJson}-->;
-		var mdEditor = editormd("content", {
-				// width  : "90%",
-				height : "100%",
-				path   : "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/",
-				appendMarkdown : "# MarkDown", 
-				saveHTMLToTextarea : true,
-				mode : "markdown",
-				tex  : true,
-				tocm : true, 
-				codeFold : true
-			});
-		//表单赋值
-		$('#createDate').val(new Date());
-		
-		$('#WidgetCategory').val(JSON.stringify(categoryJson));
-		$('#WidgetMenu').val(JSON.stringify(menuJson));
-		$('#WidgetLink').val(JSON.stringify(linkJson));
-		var category = $('#category');
-		category.empty();
-		for (var i = 0; i < categoryJson.length; i++) {
-			category.append('<option id=' + categoryJson[i] + ' value=' + categoryJson[i] + '>' + categoryJson[i] + '</option>');
-		}
-		$("#loadmore").click();//初始加载一页
-	});
-    //加载文章列表	
-    $("#loadmore").click(function(){
-        var page=$("#page").val();
-        $.ajax({
-            url:"/admin/getList/" + page + "/",
-            type:'GET',
-            dataType:"json",
-            //data:{"page":page,"typeid":typeid},
-            success:function(data){
-    
-                    tableContent="";
-                    $.each(data,function(i){
-                        var Info = data[i];
-                        var num = i+1;
-                        tableContent += '<tr><td>'+Info.id+'</td><td><a href="/admin/edit/'+Info.id+'/">'+Info.title+'</a></td><td>'+Info.createDate.replace("T","")+'</td></tr>';
-     
-                    })
-                    $("#articleList").append(tableContent);
-                    $("#page").val(++page);
-      
-            }
-        });
-    })
-    //新建文章
-    function saveAddNew(){
-        if(
-            $('#WidgetMenu').val() == "" || $('#WidgetMenu').val() == null
-            || $('#title').val() == "" || $('#title').val() == null
-            || $('#createDate').val() == "" || $('#createDate').val() == null
-            || $('#category').val() == "" || $('#category').val() == null
-        
-        ){
-           alert("信息不全");
-           return;
-            
-        }
-        var postURL = "/admin/saveEdit/";
-        if ($('#id').val() == "" || $('#id').val() == null)
-            postURL=  "/admin/saveAddNew/";
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-            url: postURL ,//url
-			contentType: "application/json; charset=utf-8",
-			data: JSON.stringify($("#addNewForm").serializeArray()), 
-            success: function (result) {
-                if("msg" in result){
-                  if ("id" in result){
-                    $('#id').val(result.id);
-                    $('#labelNew').text("编辑:"+result.id);
-                  }
-                  alert(result.msg);
-                }else {
-                  alert("失败");
+                    <div class="form-group">
+                        <div class="mdui-textfield mdui-textfield">
+                            <label class="mdui-textfield-label">创建日期</label>
+                            <input type="datetime-local" class="form-control" id="createDate" name="createDate" placeholder="" required="true" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="mdui-textfield mdui-textfield">
+                            <label class="mdui-textfield-label">分类</label>
+                            <select class="mdui-select" name="category[]" id="category" mdui-select="{position: 'auto'}"> </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="mdui-textfield ">
+                            <label class="mdui-textfield-label">标签</label>
+                            <input class="mdui-textfield-input" type="text" name="tags" id="tags" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="mdui-textfield ">
+                            <label class="mdui-textfield-label">权重</label>
+                            <input class="mdui-textfield-input" type="text" name="priority" id="priority" placeholder="0.5" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="mdui-textfield-label">更新频率</label>
+                        <select class="mdui-select" id="changefreq" name="changefreq" mdui-select="{position: 'auto'}">
+                            <option value="always" selected="selected">经常更新</option>
+                            <option value="hourly">每小时更新</option>
+                            <option value="daily">每天更新</option>
+                            <option value="weekly">每周更新</option>
+                            <option value="monthly">每月更新</option>
+                            <option value="yearly">每年更新</option>
+                            <option value="never">从不更新</option>
+                        </select>
+                    </div>
+
+                    <div id="content">
+                        <textarea style="display:none;"></textarea>
+                    </div>
+                    <a tabindex="0" type="submit" id="btn_saveAddNew" class="mdui-btn mdui-btn-block mdui-btn-raised mdui-ripple" onclick="saveAddNew()">保存</a>
+                </form>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="config">
+            <div class="container">
+                <form id="configForm" role="form">
+                    <div class="mdui-panel" mdui-panel="">
+                        <h2>博客设置</h2>
+                        <div class="mdui-panel-item">
+                            <div class="mdui-panel-item-header">
+                                <div class="mdui-panel-item-title" for="name">
+                                    分类
+                                </div>
+                                <div class="mdui-panel-item-summary">
+                                    例:
+                                    <code>[&quot;分类A&quot;,&quot;分类B&quot;,&quot;分类C&quot;,&quot;分类D&quot;]</code>
+                                </div>
+                                <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                            </div>
+                            <div class="mdui-panel-item-body">
+                                <div class="mdui-textfield ">
+                                    <textarea class="mdui-textfield-input" id="WidgetCategory" name="WidgetCategory" rows="4" placeholder="[&quot;分类A&quot;,&quot;分类B&quot;,&quot;分类C&quot;,&quot;分类D&quot;]"></textarea>
+                                </div>
+                                <div class="mdui-panel-item-actions">
+                                    <button class="mdui-btn mdui-ripple" mdui-panel-item-close="">隐藏</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdui-panel-item">
+                            <div class="mdui-panel-item-header">
+                                <div class="mdui-panel-item-title" for="name">
+                                    菜单
+                                </div>
+                                <div class="mdui-panel-item-summary">
+                                    例:
+                                    <code>[{&quot;title&quot;:&quot;技术文章&quot;,&quot;url&quot;:&quot;/category/技术文章&quot;},{&quot;title&quot;:&quot;管理&quot;,&quot;url&quot;:&quot;/admin&quot;}]</code>
+                                </div>
+                                <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                            </div>
+                            <div class="mdui-panel-item-body">
+                                <textarea class="mdui-textfield-input" id="WidgetMenu" name="WidgetMenu" rows="4" placeholder="[
+                {&quot;title&quot;:&quot;菜单A&quot;    ,&quot;url&quot;:&quot;/category/菜单A&quot;},
+                {&quot;title&quot;:&quot;菜单B&quot;    ,&quot;url&quot;:&quot;/category/菜单B&quot;}
+            ]"></textarea>
+                                <div class="mdui-panel-item-actions">
+                                    <button class="mdui-btn mdui-ripple" mdui-panel-item-close="">隐藏</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mdui-panel-item">
+                            <div class="mdui-panel-item-header">
+                                <div class="mdui-panel-item-title" for="name">
+                                    友情链接
+                                </div>
+                                <div class="mdui-panel-item-summary">
+                                    例:
+                                    <code>[{&quot;title&quot;:&quot;我的好友&quot;,&quot;url&quot;:&quot;https://blog.gezhong.vip/&quot;},{&quot;title&quot;:&quot;谷歌&quot;,&quot;url&quot;:&quot;https://www.google.com/&quot;}]</code>
+                                </div>
+                                <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                            </div>
+                            <div class="mdui-panel-item-body">
+                                <textarea class="mdui-textfield-input" id="WidgetLink" name="WidgetLink" rows="4" placeholder="[
+                    {&quot;title&quot;:&quot;好友&quot;    ,&quot;url&quot;:&quot;https://blog.gezhong.vip/&quot;},
+                    {&quot;title&quot;:&quot;谷歌&quot;    ,&quot;url&quot;:&quot;https://www.google.com/&quot;}
+                ]"></textarea>
+                                <div class="mdui-panel-item-actions">
+                                    <button class="mdui-btn mdui-ripple" mdui-panel-item-close="">隐藏</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button tabindex="0" type="submit" id="btn_saveConfig" class="mdui-btn mdui-btn-block mdui-btn-raised mdui-ripple" onclick="saveConfig()">保存</button>
+
+                    </div>
+                </form>
+                <form id="importForm" role="form">
+                    <h2>备份</h2>
+                    <div class="mdui-panel" mdui-panel="">
+                        <div class="mdui-panel-item">
+                            <div class="mdui-panel-item-header">
+                                <div class="mdui-panel-item-title">
+                                    JSON导入&amp;导出
+                                </div>
+                                <div class="mdui-panel-item-summary">
+                                    复制完整的导出json
+                                </div>
+                                <i class="mdui-panel-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+                            </div>
+                            <div class="mdui-panel-item-body">
+                                <textarea class="mdui-textfield-input" id="importJson" name="importJson" rows="4"></textarea>
+                                <div class="mdui-panel-item-actions">
+                                    <button class="mdui-btn mdui-ripple" mdui-panel-item-close="">隐藏</button>
+                                    <button tabindex="0" type="submit" id="btn_import" class="mdui-btn mdui-ripple" onclick="importBlog()">导入</button>
+                                    <button tabindex="0" type="submit" id="btn_export" class="mdui-btn mdui-ripple" href="/admin/export/">导出</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="about">
+            <div class="container">
+                <div class="mdui-card">
+                    <div class="mdui-card-primary">
+                        <img src="https://cdn.jsdelivr.net/gh/gdtool/cloudflare-workers-blog@master/themes/JustNews/files/logo2.png" />
+                        <div class="mdui-card-primary-title">
+                            关于CF-BLOG
+                        </div>
+                    </div>
+                    <div class="mdui-card-content">
+                        这是一个运行在cloudflare workers 上的博客程序
+                        <br /> 使用 cloudflare KV作为数据库,无其他依赖
+                        <br />兼容静态博客的速度,以及动态博客的灵活性,方便搭建不折腾
+                    </div>
+                    <div class="mdui-card-actions">
+                        <a href="https://github.com/gdtool/cloudflare-workers-blog"><button class="mdui-btn mdui-ripple">项目地址</button> </a>
+                        <a href="https://blog.gezhong.vip"><button class="mdui-btn mdui-ripple">演示地址</button> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/editor.md@1.5.0/editormd.js"></script>
+        <script type="text/javascript">
+            $(function() {
+                $('#myTab li:eq(0) 1').tab('show');
+                //获取分类
+                var categoryJson = < !--{
+                    categoryJson
+                }-- > ;
+                //获取菜单
+                var menuJson = < !--{
+                    menuJson
+                }-- > ;
+                var linkJson = < !--{
+                    linkJson
+                }-- > ;
+                var mdEditor = editormd("content", {
+                    // width  : "90%",
+                    height: 640,
+                    path: "https://cdn.jsdelivr.net/npm/editor.md@1.5.0/lib/",
+                    appendMarkdown: "# MarkDown",
+                    saveHTMLToTextarea: true,
+                    mode: "markdown",
+                    tex: true,
+                    tocm: true,
+                    codeFold: true
+                });
+                //表单赋值
+                $('#createDate').val(new Date());
+
+                $('#WidgetCategory').val(JSON.stringify(categoryJson));
+                $('#WidgetMenu').val(JSON.stringify(menuJson));
+                $('#WidgetLink').val(JSON.stringify(linkJson));
+                var category = $('#category');
+                category.empty();
+                for (var i = 0; i < categoryJson.length; i++) {
+                    category.append('<option id=' + categoryJson[i] + ' value=' + categoryJson[i] + '>' + categoryJson[i] + '</option>');
                 }
+                $("#loadmore").click(); //初始加载一页
+            });
+            //加载文章列表    
+            $("#loadmore").click(function() {
+                var page = $("#page").val();
+                $.ajax({
+                    url: "/admin/getList/" + page + "/",
+                    type: 'GET',
+                    dataType: "json",
+                    //data:{"page":page,"typeid":typeid},
+                    success: function(data) {
+
+                        tableContent = "";
+                        $.each(data, function(i) {
+                            var Info = data[i];
+                            var num = i + 1;
+                            tableContent += '<tr><td>' + Info.id + '</td><td><a href="/admin/edit/' + Info.id + '/">' + Info.title + '</a></td><td>' + Info.createDate.replace("T", "") + '</td></tr>';
+
+                        })
+                        $("#articleList").append(tableContent);
+                        $("#page").val(++page);
+
+                    }
+                });
+            })
+            //新建文章
+            function saveAddNew() {
+                if (
+                    $('#WidgetMenu').val() == "" || $('#WidgetMenu').val() == null ||
+                    $('#createDate').val() == "" || $('#createDate').val() == null ||
+                    $('#createDate').val() == "" || $('#createDate').val() == null
+
+                ) {
+                    alert("信息不全");
+                    return;
+
+                }
+                var postURL = "/admin/saveEdit/";
+                if ($('#id').val() == "" || $('#id').val() == null)
+                    postURL = "/admin/saveAddNew/";
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    url: postURL, //url
+                    contentType: "application/json; charset=utf-8",
+                    data: JSON.stringify($("#addNewForm").serializeArray()),
+                    success: function(result) {
+                        if ("id" in result) {
+                            $('#id').val(result.id);
+                            $('#labelNew').text("编辑:" + result.id);
+                            alert(result.msg);
+                        } else {
+                            alert("失败");
+                        }
+                    }
+                });
             }
-        });
-    }
-    //保存设置
-    function saveConfig(){
-        if(!isJSON($('#WidgetCategory').val()))
-        {
-            alert("分类格式错误"); 
-            return false;
-        }
-        if(!isJSON($('#WidgetMenu').val()))
-        {
-            alert("菜单格式错误"); 
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-			contentType: "application/json; charset=utf-8",
-            url: "/admin/saveConfig/" ,//url
-			data: JSON.stringify($("#configForm").serializeArray()), 
-            success: function (result) {
-                alert(result.msg);
-            }
-        });
-    }
-    //导入json
-    function importBlog(){
-        if(!isJSON($('#importJson').val()))
-        {
-            alert("导入格式错误"); 
-            return false;
-        }
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-			contentType: "application/json; charset=utf-8",
-            url: "/admin/import/" ,//url
-			data: JSON.stringify($("#importForm").serializeArray()), 
-            success: function (result) {
-                alert(result.msg);
-            }
-        });
-    }
-    //发布
-    function publish(){
-        if (confirm("确定吗?发布将清理所有静态缓存,重新生成")==false){ 
-            return false; 
-          }
-        $.ajax({
-            type: "POST",
-            dataType: "json",
-			contentType: "application/json; charset=utf-8",
-            url: "/admin/publish/" ,//url
-            success: function (result) {
-                alert(result.msg);
-            }
-        });
-    }
-    function isJSON(str) {
-        if (typeof str == 'string') {
-            try {
-                var obj=JSON.parse(str);
-                if(typeof obj == 'object' && obj ){
-                    return true;
-                }else{
+            //保存设置
+            function saveConfig() {
+                if (!isJSON($('#WidgetCategory').val())) {
+                    alert("分类格式错误");
                     return false;
                 }
-    
-            } catch(e) {
-               // console.log('error：'+str+'!!!'+e);
+                if (!isJSON($('#WidgetMenu').val())) {
+                    alert("菜单格式错误");
+                    return false;
+                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/admin/saveConfig/", //url
+                    data: JSON.stringify($("#configForm").serializeArray()),
+                    success: function(result) {
+                        alert(result.msg);
+                    }
+                });
+            }
+            //导入json
+            function importBlog() {
+                if (!isJSON($('#importJson').val())) {
+                    alert("导入格式错误");
+                    return false;
+                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/admin/import/", //url
+                    data: JSON.stringify($("#importForm").serializeArray()),
+                    success: function(result) {
+                        alert(result.msg);
+                    }
+                });
+            }
+            //发布
+            function publish() {
+                if (confirm("确定吗?发布将清理所有静态缓存,重新生成。由于前端使用缓存,以下操作需要发布:新建文章、发布文章、修改后台配置、修改workers配置前端生效需要ctrl+F5 强制刷新") == false) {
+                    return false;
+                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    url: "/admin/publish/", //url
+                    success: function(result) {
+                        alert(result.msg);
+                    }
+                });
+            }
+
+            function isJSON(str) {
+                if (typeof str == 'string') {
+                    try {
+                        var obj = JSON.parse(str);
+                        if (typeof obj == 'object' && obj) {
+                            return true;
+                        } else {
+                            return false;
+                        }
+
+                    } catch (e) {
+                        // console.log('error：'+str+'!!!'+e);
+                        return false;
+                    }
+                }
                 return false;
             }
-        }
-        return false;
-    }
-</script>
- 
-
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mdui@1.0.1/dist/js/mdui.min.js" integrity="sha384-gCMZcshYKOGRX9r6wbDrvF+TcCCswSHFucUzUPwka+Gr+uHgjlYvkABr95TCOz3A" crossorigin="anonymous"></script>
 </body>
 
 </html>
